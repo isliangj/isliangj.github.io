@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Linux 系统介绍基本知识
+硬盘分为：IDE、SCSI和SATA硬盘。Linux中IDE接口的设备被称为hd，SCSI和SATA接口的设备被称为sd。第一块硬盘是sda，第二块为sdb……
+Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
+主分区中sda4一般作为扩">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="isliangj">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Linux基础"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="isliangj&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Linux基础 - isliangj&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Linux基础</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-09-18
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/笔记/">#笔记</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Linux-系统介绍"><a href="#Linux-系统介绍" class="headerlink" title="Linux 系统介绍"></a>Linux 系统介绍</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ul>
+<li>硬盘分为：IDE、SCSI和SATA硬盘。Linux中IDE接口的设备被称为hd，SCSI和SATA接口的设备被称为sd。第一块硬盘是sda，第二块为sdb……</li>
+<li>Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。</li>
+<li>主分区中sda4一般作为扩展分区（只能有一个），扩展分区不写入数据，只是包含逻辑分区，逻辑分区就不限制个数，标识从5开始。</li>
+</ul>
+<h2 id="与Windows的区别"><a href="#与Windows的区别" class="headerlink" title="与Windows的区别"></a>与Windows的区别</h2><ul>
+<li>Linux严格区分大小写（Linux是命令行  Windows是dos界面）</li>
+<li>Linux中 一切皆文件，包括硬件、用户</li>
+<li>Linux中 不靠扩展名区分文件类型，靠权限区分，但有约定俗称的扩展名</li>
+<li>Linux中 不能直接安装和运行Windows的程序</li>
+</ul>
+<h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><ol>
+<li><p>先分200M给<code>/boot</code>用于启动</p>
+</li>
+<li><p>后分2048M（两倍于内存大小但不超过2G）给<code>swap</code>交换分区</p>
+</li>
+<li><p>之后分1024M给<code>/home</code>存放登陆用户的配置和私人文件</p>
+</li>
+<li><p>最后把剩余的空间都分配给<code>/</code>根分区，存放系统所必须的文件</p>
+</li>
+</ol>
+<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p>在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</p>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><ul>
+<li>FAT16（File Allocation Table 文件分配表）</li>
+<li>FAT32、NTFS（New Technology File System）</li>
+<li>EXT2（second extended filesystem第二代扩展文件系统）</li>
+<li>EXT3</li>
+<li>EXT4</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li><code>Ctrl + c</code>&emsp;&emsp;&emsp;强制终止当前命令</li>
+<li><code>Ctrl + l</code>&emsp;&emsp;&emsp;清屏</li>
+<li><code>Ctrl + a</code>&emsp;&emsp;&emsp;光标移动到命令行首</li>
+<li><code>Ctrl + e</code>&emsp;&emsp;&emsp;光标移动到命令行尾</li>
+<li><code>Ctrl + u</code>&emsp;&emsp;&emsp;从光标所在位置删除到行首</li>
+<li><code>Ctrl + z</code>&emsp;&emsp;&emsp;把命令放在后台</li>
+<li><code>Ctrl + r</code>&emsp;&emsp;&emsp;在历史命令中搜索</li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjnyn0obcnj30yn12kdky.jpg" alt=""></p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h2><h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><p><em>mkdir</em></p>
+<ul>
+<li>新建目录</li>
+<li>英文：mack directories</li>
+<li><code>mkdir [选项] [目录名]</code></li>
+<li>-p 递归创建 </li>
+</ul>
+<p><em>cd</em></p>
+<ul>
+<li>切换所在目录</li>
+<li>英文：change directory</li>
+<li><code>cd  [目录]</code></li>
+<li>简化操作：<ul>
+<li>cd ~ / cd &emsp;&emsp;&emsp;进入当前用户的家目录</li>
+<li>cd - &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入上次目录</li>
+<li>cd ..&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入上一级目录（加空格）</li>
+<li>cd . &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入当前目录（无用）</li>
+</ul>
+</li>
+</ul>
+<p><em>pwd</em></p>
+<ul>
+<li>查询所在目录位置</li>
+<li>英文：print working directory</li>
+</ul>
+<p><em>rmdir</em></p>
+<ul>
+<li>删除空目录（少用）</li>
+<li>英文：remove empty directories</li>
+<li><code>rmdir [目录名]</code></li>
+</ul>
+<p><em>rm</em></p>
+<ul>
+<li>删除文件或目录（小心）</li>
+<li><code>rm  -rf [文件或目录]</code></li>
+<li>英文：remove</li>
+<li>选项：<ul>
+<li>-r&emsp;&emsp;&emsp;删除目录</li>
+<li>-f&emsp;&emsp;&emsp;强制删除</li>
+</ul>
+</li>
+</ul>
+<p><em>cp</em></p>
+<ul>
+<li>复制命令</li>
+<li><code>cp [选项] [原文件或目录] [目标目录]</code></li>
+<li>英文：copy</li>
+<li>选项：<ul>
+<li>-r  &emsp;&emsp;复制目录</li>
+<li>-p  &emsp;&emsp;连带文件属性复制</li>
+<li>-d  &emsp;&emsp;若源文件是链接文件，则复制链接属性</li>
+<li>-a  &emsp;&emsp;相当于 -pdr 所有的属性都一样</li>
+</ul>
+</li>
+</ul>
+<p><em>mv</em></p>
+<ul>
+<li>剪切或改名命令</li>
+<li>英文：move</li>
+<li><code>mv  [原文件或目录] [目标目录/新名字]</code></li>
+<li>注：剪切目录的时候不需要加 -r</li>
+</ul>
+<h3 id="链接命令"><a href="#链接命令" class="headerlink" title="链接命令"></a>链接命令</h3><p><em>ln</em></p>
+<ul>
+<li>链接命令</li>
+<li><code>ln  -s  [原文件]  [目标文件]</code></li>
+<li>英文：link</li>
+<li>功能描述：生成链接文件</li>
+<li>选项： <ul>
+<li>-s  创建软链接</li>
+</ul>
+</li>
+<li>注：软链接的路径一定要写绝对路径</li>
+<li>硬链接：（不建议使用）<ul>
+<li>可以看做是同一个文件</li>
+<li>可通过i节点识别</li>
+<li>不能跨分区</li>
+<li>不能针对目录使用</li>
+</ul>
+</li>
+<li>软链接：<ul>
+<li>类似于Windows的快捷方式</li>
+<li>拥有自己的i节点 和 block块，只保存原文件的文件名和i节点，并没有实际的数据</li>
+<li>修改任意文件，另一个都改变</li>
+<li>删除原文件，软链接不能使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h2><p><em>locate</em></p>
+<ul>
+<li>在后台数据库中按文件名搜索  搜索速度更快</li>
+<li><code>locate  文件名</code></li>
+<li>后台数据库 <code>/var/lib/mlocate</code>  （一天一更新）</li>
+<li>更新数据库命令 <code>updatedb</code></li>
+<li>缺点：只能通过文件名搜索</li>
+</ul>
+<p><em>whereis</em></p>
+<ul>
+<li>搜索命令的命令</li>
+<li><code>whereis  命令名</code></li>
+<li>搜索命令所在路径及帮助文档的所在位置</li>
+<li>选项：<ul>
+<li>-b   只查找可执行文件</li>
+<li>-m  只查找帮助文件</li>
+</ul>
+</li>
+</ul>
+<p><em>which</em></p>
+<ul>
+<li>搜索命令所在路径及别名</li>
+<li>which 文件名</li>
+</ul>
+<p>find</p>
+<ul>
+<li>搜索文件</li>
+<li><code>find  [搜索范围]  [搜索条件]</code></li>
+<li>find  /  -name  install.log</li>
+<li>避免大范围搜索  会非常耗资源</li>
+<li>find是搜索符合条件的文件名，如果需要模糊查询，使用通配符匹配通配符是完全匹配：<ul>
+<li>* 匹配任意内容</li>
+<li>?  匹配任意一个字符</li>
+<li style="list-style: none"><input type="checkbox"> 匹配任意一个中括号内的字符</li>
+</ul>
+</li>
+<li>选项：<ul>
+<li>不区分大小写 <code>find  /root  -iname   install.log</code></li>
+<li>按照所有者搜索  <code>find  /root  -user  root</code></li>
+<li>查找没有所有者的文件 <code>find  /root  -nouser</code></li>
+<li>查找10天前修改的文件  <code>find  /var/log  -mtime  +10</code></li>
+<li>查找文件大小是25k的文件 <code>find  .  -size   25k</code></li>
+<li>查找i节点是262422的文件 <code>find   .   -inum   262422</code></li>
+<li>逻辑与 <code>-a</code> 逻辑或 <code>-o</code></li>
+<li>对搜索结果在进行操作  <code>-exec/-ok  (命令) {} \</code></li>
+</ul>
+</li>
+</ul>
+<p><em>grep</em></p>
+<ul>
+<li>在文件中匹配符合条件的“字符串”</li>
+<li><code>grep  [选项]  字符串  文件名</code></li>
+<li>选项：<ul>
+<li>-i    忽略大小写</li>
+<li>-v    排除指定字符串</li>
+</ul>
+</li>
+</ul>
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><p><em>man</em></p>
+<ul>
+<li>获取指定命令的帮助</li>
+<li><code>man  命令</code></li>
+<li>英文：manual（文档）</li>
+<li>级别：<ul>
+<li>0    ：关机</li>
+<li>1    ：单用户    类似于win中的安全模式</li>
+<li>2    ：不完全多用户，不含NFS服务    不包含NFS的普通字符界面</li>
+<li>3 ：完全多用户    普通的字符界面</li>
+<li>4    ：未分配</li>
+<li>5    ：图像界面</li>
+<li>6    ：重启</li>
+</ul>
+</li>
+<li>查看命令拥有哪个级别：  man  -f(级别)  命令    (相当于)  whatis  命令</li>
+<li>查看和命令相关的所有帮助：man  -k  命令    （相当于） apropos  命令</li>
+</ul>
+<ul>
+<li>-help</li>
+</ul>
+<ul>
+<li>获取命令选项帮助</li>
+<li><code>命令  - -help</code></li>
+</ul>
+<p><em>help</em></p>
+<ul>
+<li>获取shell内部命令的帮助</li>
+<li><code>help  内部命令</code></li>
+</ul>
+<p><em>info</em></p>
+<ul>
+<li>详细命令帮助（不常用）</li>
+<li><code>info  命令</code><ul>
+<li>回车：进入子帮助页面（带有*号标记）</li>
+<li>u：进入上层页面</li>
+<li>n：进入下一个帮助小节</li>
+<li>p：进入上一个帮助小节</li>
+<li>q：退出</li>
+</ul>
+</li>
+</ul>
+<h2 id="压缩和解压缩命令"><a href="#压缩和解压缩命令" class="headerlink" title="压缩和解压缩命令"></a>压缩和解压缩命令</h2><p><em>.zip</em></p>
+<ul>
+<li>压缩文件： <code>zip  压缩文件名  源文件</code></li>
+<li>压缩目录：<code>zip  -r  压缩文件名  源目录</code></li>
+<li>解压缩文件：<code>unzip  压缩文件</code></li>
+</ul>
+<p><em>.gz</em></p>
+<ul>
+<li>压缩后源文件消失：<code>gzip  源文件</code></li>
+<li>压缩后源文件保留：<code>gzip  -c  源文件  &gt;  压缩文件</code></li>
+<li>压缩目录下的所有子文件，但不压缩目录：<code>gzip  -r  目录</code></li>
+<li>解压：<code>gzip  -d  压缩文件  /  gunzip  压缩文件</code></li>
+</ul>
+<p><em>.bz2</em></p>
+<ul>
+<li>压缩后不保留源文件：<code>bzip2  源文件</code></li>
+<li>压缩后保留源文件：<code>bzip2  -k  源文件</code></li>
+<li>解压（-k保留压缩文件）：<code>bzip2  -d  压缩文件 /  bunzip2  压缩文件</code></li>
+<li>注：bzip2不能压缩目录</li>
+</ul>
+<p><em>tar</em></p>
+<ul>
+<li>打包</li>
+<li>tar  <code>-cvf  打包文件名  源文件</code></li>
+<li>选项：<ul>
+<li>-c：打包</li>
+<li>-v：显示过程</li>
+<li>-f：指定打包后的文件名</li>
+</ul>
+</li>
+<li>打包之后再压缩 </li>
+<li>解打包命令：<code>tar  -xvf  打包文件名</code></li>
+<li>选项：<ul>
+<li>-x：解打包</li>
+</ul>
+</li>
+</ul>
+<p><em>.tar.gz（常见）</em></p>
+<ul>
+<li>先打包 再压缩/解压</li>
+<li>压缩：<code>tar  -zcvf  压缩包名.tar.gz  源文件</code></li>
+<li>选项：<ul>
+<li>-z：压缩为.tar.gz格式</li>
+</ul>
+</li>
+<li>解压缩：<code>tar  -zxvf  压缩包名.tar.gz</code></li>
+<li>选项：<ul>
+<li>-x：解压缩.tar.gz格式</li>
+</ul>
+</li>
+<li>指定位置解压：<code>tar  -zxvf  压缩包名.tar.gz  -C  解压目录</code></li>
+<li>查看压缩包：<code>tar  -ztvf  压缩包名.tar.gz</code></li>
+</ul>
+<p>.tar.bz2（常见）</p>
+<ul>
+<li>先打包 再压缩/解压</li>
+<li>压缩：<code>tar  -jcvf  压缩包名.tar.bz2  源文件</code></li>
+<li>选项：<ul>
+<li>-z：压缩为.tar.bz2格式</li>
+</ul>
+</li>
+<li>解压缩 <code>tar  -jxvf  压缩包名.tar.bz2</code></li>
+<li>选项：<ul>
+<li>-x：解压缩.tar.bz2格式</li>
+</ul>
+</li>
+<li>指定位置解压：<code>tar  -jxvf  压缩包名.tar.bz2  -C  解压目录</code></li>
+<li>查看压缩包：<code>tar  -ztvf  压缩包名.tar.bz2</code></li>
+</ul>
+<h2 id="关机和重启命令"><a href="#关机和重启命令" class="headerlink" title="关机和重启命令"></a>关机和重启命令</h2><p><em>shutdown</em></p>
+<ul>
+<li>shutdown  [ 选项 ]  时间</li>
+<li>选项：<ul>
+<li>-c：取消前一个关机命令</li>
+<li>-h：关机</li>
+<li>-r：重启</li>
+</ul>
+</li>
+<li><p>时间：</p>
+<ul>
+<li>now：立即重启</li>
+<li>00：00 定时重启</li>
+</ul>
+</li>
+<li><p>其他关机命令（不安全）：</p>
+<ul>
+<li><code>halt</code></li>
+<li><code>poweroff</code></li>
+<li><code>init  0</code></li>
+</ul>
+</li>
+<li><p>其他重启命令：</p>
+<ul>
+<li><code>reboot</code></li>
+<li><code>init  6 （不安全）</code></li>
+</ul>
+</li>
+<li><p>退出登录：<code>logout</code></p>
+</li>
+</ul>
+<h2 id="挂载命令"><a href="#挂载命令" class="headerlink" title="挂载命令"></a>挂载命令</h2><p><em>mount</em></p>
+<ul>
+<li><code>mount [ -t文件系统 ]  [-o 特殊选项]  设备文件名  挂载点</code></li>
+<li>选项：<ul>
+<li>-t 文件系统：加入文件系统类型来指定挂载的类型。可以ext3、ext4、ISO9660 等文件系统</li>
+<li>-o特殊选项：可以指定挂载的额外选项<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjo0o9p72cj312f0jkna3.jpg" alt=""></li>
+</ul>
+</li>
+<li><p>查询系统中已经挂载的设备：<code>mount</code></p>
+</li>
+<li><p>依据配置文件/etc/fstab的内容 自动挂载：<code>mount  -a</code></p>
+</li>
+<li>注：LInux 挂载点 == Windows 分配盘符</li>
+<li>建立挂载点：<code>mkdir  /mnt/cdrom/</code></li>
+<li><p>挂载光盘</p>
+<ul>
+<li><p><code>mount  -t  iso9660  /dev/cdrom  /mnt/cdrom/</code></p>
+</li>
+<li><p><code>mount  /dev/sr0  /mnt/cdrom</code></p>
+</li>
+</ul>
+</li>
+<li>卸载命令：<code>umount  设备文件名或挂载点</code></li>
+<li><p>注：先退出光盘的目录；一定要先卸载才能拿出光盘</p>
+</li>
+<li><p>挂载U盘：<code>mount  -t  vfat  /dev/sdb1  /mnt/usb</code></p>
+</li>
+<li>查看U盘设备文件名：<code>fdisk  -l</code></li>
+<li>注：LInux默认不支持NTFS文件系统</li>
+</ul>
+<h2 id="用户登录查看"><a href="#用户登录查看" class="headerlink" title="用户登录查看"></a>用户登录查看</h2><p><em>w 用户名</em></p>
+<ul>
+<li>查看登录用户信息</li>
+</ul>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fjo0w9j87sj30vc0cnaju.jpg" alt=""></p>
+<p><em>who  用户名</em></p>
+<ul>
+<li>查看登录用户信息</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjo0wy440zj30fp06djth.jpg" alt=""></p>
+<p><em>last</em></p>
+<ul>
+<li>查看当前登录和过去登录的用户信息</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjo0xqu8jhj30o60agdk9.jpg" alt=""></p>
+<p><em>lastlog</em></p>
+<ul>
+<li>查看所有用户的最后一次登录时间</li>
+</ul>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjo0yw43bej30qc08tae6.jpg" alt=""></p>
+<h2 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h2><p><em>history</em></p>
+<ul>
+<li><code>history  [选项]  [历史命令保存文件]</code></li>
+<li>选项：<ul>
+<li>-c：清空历史命令</li>
+<li>-w：把缓存中的历史命令写入历史命令保存文件  <code>~/.bash_history</code></li>
+</ul>
+</li>
+<li>历史命令的调用：</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjo0zpn0qgj30x107gdk5.jpg" alt=""></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 isliangj<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
