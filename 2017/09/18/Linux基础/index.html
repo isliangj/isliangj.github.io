@@ -197,18 +197,18 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="Linux-系统介绍"><a href="#Linux-系统介绍" class="headerlink" title="Linux 系统介绍"></a>Linux 系统介绍</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ul>
+                <h2 id="Linux-系统介绍"><a href="#Linux-系统介绍" class="headerlink" title="Linux 系统介绍"></a>Linux 系统介绍</h2><h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><ul>
 <li>硬盘分为：IDE、SCSI和SATA硬盘。Linux中IDE接口的设备被称为hd，SCSI和SATA接口的设备被称为sd。第一块硬盘是sda，第二块为sdb……</li>
 <li>Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。</li>
 <li>主分区中sda4一般作为扩展分区（只能有一个），扩展分区不写入数据，只是包含逻辑分区，逻辑分区就不限制个数，标识从5开始。</li>
 </ul>
-<h2 id="与Windows的区别"><a href="#与Windows的区别" class="headerlink" title="与Windows的区别"></a>与Windows的区别</h2><ul>
+<h3 id="与Windows的区别"><a href="#与Windows的区别" class="headerlink" title="与Windows的区别"></a>与Windows的区别</h3><ul>
 <li>Linux严格区分大小写（Linux是命令行  Windows是dos界面）</li>
 <li>Linux中 一切皆文件，包括硬件、用户</li>
 <li>Linux中 不靠扩展名区分文件类型，靠权限区分，但有约定俗称的扩展名</li>
 <li>Linux中 不能直接安装和运行Windows的程序</li>
 </ul>
-<h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><ol>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><ol>
 <li><p>先分200M给<code>/boot</code>用于启动</p>
 </li>
 <li><p>后分2048M（两倍于内存大小但不超过2G）给<code>swap</code>交换分区</p>
@@ -218,15 +218,15 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li><p>最后把剩余的空间都分配给<code>/</code>根分区，存放系统所必须的文件</p>
 </li>
 </ol>
-<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p>在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</p>
-<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><ul>
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><p>在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</p>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><ul>
 <li>FAT16（File Allocation Table 文件分配表）</li>
 <li>FAT32、NTFS（New Technology File System）</li>
 <li>EXT2（second extended filesystem第二代扩展文件系统）</li>
 <li>EXT3</li>
 <li>EXT4</li>
 </ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ul>
 <li><code>Ctrl + c</code>&emsp;&emsp;&emsp;强制终止当前命令</li>
 <li><code>Ctrl + l</code>&emsp;&emsp;&emsp;清屏</li>
 <li><code>Ctrl + a</code>&emsp;&emsp;&emsp;光标移动到命令行首</li>
@@ -235,13 +235,27 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li><code>Ctrl + z</code>&emsp;&emsp;&emsp;把命令放在后台</li>
 <li><code>Ctrl + r</code>&emsp;&emsp;&emsp;在历史命令中搜索</li>
 </ul>
-<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjnyn0obcnj30yn12kdky.jpg" alt=""></p>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h2><h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><p><em>mkdir</em></p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjnyn0obcnj30yn12kdky.jpg" alt=""></p>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><p><em>-rw-rw-r–详解</em></p>
+<ul>
+<li>第一位: -:表示普通文件,d: 表示目录, l:表示符号链接</li>
+<li>第二到第十位: 如下所示:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">属主（user）    属组（group）    其他用户</div><div class="line">r    w    x    r    w    x    r    w    x</div><div class="line">4    2    1    4    2    1    4    2    1</div></pre></td></tr></table></figure>
+<ul>
+<li>-表示没有权限,r:表示读权限, w:表示写权限,x:表示执行权限</li>
+</ul>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><ul>
+<li>普通文件（-）： 包括文本文件、数据文件、可执行的二进制程序文件等。</li>
+<li>目录文件（d）： Linux系统把目录看成是一种特殊的文件，利用它构成文件系统的树型结构。</li>
+<li>设备文件： Linux系统把每一个设备都看成是一个文件</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h3><p><em>mkdir</em></p>
 <ul>
 <li>新建目录</li>
 <li>英文：mack directories</li>
 <li><code>mkdir [选项] [目录名]</code></li>
-<li>-p 递归创建 </li>
+<li>-p 递归创建</li>
 </ul>
 <p><em>cd</em></p>
 <ul>
@@ -250,11 +264,41 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li><code>cd  [目录]</code></li>
 <li>简化操作：<ul>
 <li>cd ~ / cd &emsp;&emsp;&emsp;进入当前用户的家目录</li>
-<li>cd - &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入上次目录</li>
+<li>cd - &emsp;&emsp;&emsp;&emsp;&emsp;进入上次目录</li>
 <li>cd ..&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入上一级目录（加空格）</li>
 <li>cd . &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入当前目录（无用）</li>
 </ul>
 </li>
+</ul>
+<p><em>ls</em></p>
+<ul>
+<li>显示当前目录内容</li>
+<li>英文：list</li>
+<li><code>ls [参数] [路径或文件名]</code></li>
+<li>显示所有文件或目录（包含隐藏的文件）:<code>ls -a</code></li>
+<li>显示详细信息：<code>ls -l 缩写 ll</code></li>
+<li>友好显示文件大小：<code>ll -h</code></li>
+</ul>
+<p><em>du</em></p>
+<ul>
+<li>显示目录或文件的大小</li>
+<li><code>du –h</code></li>
+</ul>
+<p><em>cat</em></p>
+<ul>
+<li>查看整个文件内容</li>
+<li><code>cat [参数] 文件名</code></li>
+</ul>
+<p><em>more</em></p>
+<ul>
+<li>查看大文件一屏幕显示不完内容</li>
+<li>空格或者回车键显示下一行内容</li>
+<li>使用<code>q</code>或者<code>ctrl+c</code>退出</li>
+</ul>
+<p><em>less</em></p>
+<ul>
+<li>省略大文件内容</li>
+<li>通过<code>PgUp</code>、<code>PgDn</code>键来控制</li>
 </ul>
 <p><em>pwd</em></p>
 <ul>
@@ -278,6 +322,11 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 </ul>
 </li>
 </ul>
+<p><em>touch</em></p>
+<ul>
+<li>创建空文件</li>
+<li><code>touch 文件名</code></li>
+</ul>
 <p><em>cp</em></p>
 <ul>
 <li>复制命令</li>
@@ -298,13 +347,18 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li><code>mv  [原文件或目录] [目标目录/新名字]</code></li>
 <li>注：剪切目录的时候不需要加 -r</li>
 </ul>
+<p><em>wget</em></p>
+<ul>
+<li>下载文件</li>
+<li><code>wget url</code></li>
+</ul>
 <h3 id="链接命令"><a href="#链接命令" class="headerlink" title="链接命令"></a>链接命令</h3><p><em>ln</em></p>
 <ul>
 <li>链接命令</li>
 <li><code>ln  -s  [原文件]  [目标文件]</code></li>
 <li>英文：link</li>
 <li>功能描述：生成链接文件</li>
-<li>选项： <ul>
+<li>选项：<ul>
 <li>-s  创建软链接</li>
 </ul>
 </li>
@@ -324,7 +378,7 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 </ul>
 </li>
 </ul>
-<h2 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h2><p><em>locate</em></p>
+<h3 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h3><p><em>locate</em></p>
 <ul>
 <li>在后台数据库中按文件名搜索  搜索速度更快</li>
 <li><code>locate  文件名</code></li>
@@ -348,14 +402,14 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li>搜索命令所在路径及别名</li>
 <li>which 文件名</li>
 </ul>
-<p>find</p>
+<p><em>find</em></p>
 <ul>
 <li>搜索文件</li>
 <li><code>find  [搜索范围]  [搜索条件]</code></li>
 <li>find  /  -name  install.log</li>
 <li>避免大范围搜索  会非常耗资源</li>
 <li>find是搜索符合条件的文件名，如果需要模糊查询，使用通配符匹配通配符是完全匹配：<ul>
-<li>* 匹配任意内容</li>
+<li>- 匹配任意内容</li>
 <li>?  匹配任意一个字符</li>
 <li style="list-style: none"><input type="checkbox"> 匹配任意一个中括号内的字符</li>
 </ul>
@@ -382,27 +436,25 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 </ul>
 </li>
 </ul>
-<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><p><em>man</em></p>
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><p><em>man</em></p>
 <ul>
 <li>获取指定命令的帮助</li>
 <li><code>man  命令</code></li>
 <li>英文：manual（文档）</li>
 <li>级别：<ul>
-<li>0    ：关机</li>
-<li>1    ：单用户    类似于win中的安全模式</li>
-<li>2    ：不完全多用户，不含NFS服务    不包含NFS的普通字符界面</li>
-<li>3 ：完全多用户    普通的字符界面</li>
-<li>4    ：未分配</li>
-<li>5    ：图像界面</li>
-<li>6    ：重启</li>
+<li>0：关机</li>
+<li>1：单用户类似于win中的安全模式</li>
+<li>2：不完全多用户，不含NFS服务不包含NFS的普通字符界面</li>
+<li>3 ：完全多用户普通的字符界面</li>
+<li>4：未分配</li>
+<li>5：图像界面</li>
+<li>6：重启</li>
 </ul>
 </li>
-<li>查看命令拥有哪个级别：  man  -f(级别)  命令    (相当于)  whatis  命令</li>
+<li>查看命令拥有哪个级别：man  -f(级别)  命令 (相当于) whatis  命令</li>
 <li>查看和命令相关的所有帮助：man  -k  命令    （相当于） apropos  命令</li>
 </ul>
-<ul>
-<li>-help</li>
-</ul>
+<p><em>-help</em></p>
 <ul>
 <li>获取命令选项帮助</li>
 <li><code>命令  - -help</code></li>
@@ -424,7 +476,7 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 </ul>
 </li>
 </ul>
-<h2 id="压缩和解压缩命令"><a href="#压缩和解压缩命令" class="headerlink" title="压缩和解压缩命令"></a>压缩和解压缩命令</h2><p><em>.zip</em></p>
+<h3 id="压缩和解压缩命令"><a href="#压缩和解压缩命令" class="headerlink" title="压缩和解压缩命令"></a>压缩和解压缩命令</h3><p><em>.zip</em></p>
 <ul>
 <li>压缩文件： <code>zip  压缩文件名  源文件</code></li>
 <li>压缩目录：<code>zip  -r  压缩文件名  源目录</code></li>
@@ -454,7 +506,7 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li>-f：指定打包后的文件名</li>
 </ul>
 </li>
-<li>打包之后再压缩 </li>
+<li>打包之后再压缩</li>
 <li>解打包命令：<code>tar  -xvf  打包文件名</code></li>
 <li>选项：<ul>
 <li>-x：解打包</li>
@@ -477,7 +529,7 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li>指定位置解压：<code>tar  -zxvf  压缩包名.tar.gz  -C  解压目录</code></li>
 <li>查看压缩包：<code>tar  -ztvf  压缩包名.tar.gz</code></li>
 </ul>
-<p>.tar.bz2（常见）</p>
+<p><em>.tar.bz2（常见）</em></p>
 <ul>
 <li>先打包 再压缩/解压</li>
 <li>压缩：<code>tar  -jcvf  压缩包名.tar.bz2  源文件</code></li>
@@ -493,7 +545,7 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li>指定位置解压：<code>tar  -jxvf  压缩包名.tar.bz2  -C  解压目录</code></li>
 <li>查看压缩包：<code>tar  -ztvf  压缩包名.tar.bz2</code></li>
 </ul>
-<h2 id="关机和重启命令"><a href="#关机和重启命令" class="headerlink" title="关机和重启命令"></a>关机和重启命令</h2><p><em>shutdown</em></p>
+<h3 id="关机和重启命令"><a href="#关机和重启命令" class="headerlink" title="关机和重启命令"></a>关机和重启命令</h3><p><em>shutdown</em></p>
 <ul>
 <li>shutdown  [ 选项 ]  时间</li>
 <li>选项：<ul>
@@ -524,7 +576,40 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li><p>退出登录：<code>logout</code></p>
 </li>
 </ul>
-<h2 id="挂载命令"><a href="#挂载命令" class="headerlink" title="挂载命令"></a>挂载命令</h2><p><em>mount</em></p>
+<h3 id="网络通讯命令"><a href="#网络通讯命令" class="headerlink" title="网络通讯命令"></a>网络通讯命令</h3><p><em>ifconfig</em></p>
+<ul>
+<li>显示或设置网络设备</li>
+<li>显示网络设备：<code>ifconfig</code> </li>
+<li>启用eth0网卡：<code>ifconfig eth0 up</code> </li>
+<li>停用eth0：<code>ifconfig eth0 down</code> </li>
+</ul>
+<p><em>ping</em></p>
+<ul>
+<li>测试网络状态</li>
+<li><code>ping 192.168.164.1</code></li>
+</ul>
+<p><em>netstat</em></p>
+<ul>
+<li>查看网络端口</li>
+<li>选项：<ul>
+<li>-t : 指明显示TCP端口</li>
+<li>-u : 指明显示UDP端口</li>
+<li>-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)</li>
+<li>-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。</li>
+<li>-n : 不进行DNS轮询(可以加速操作)</li>
+</ul>
+</li>
+</ul>
+<p><em>hostname</em></p>
+<ul>
+<li>查看当前主机名</li>
+</ul>
+<p><em>uname</em></p>
+<ul>
+<li>显示系统信息</li>
+<li><code>uname -a</code> 显示本机详细信息。 依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型</li>
+</ul>
+<h3 id="挂载命令"><a href="#挂载命令" class="headerlink" title="挂载命令"></a>挂载命令</h3><p><em>mount</em></p>
 <ul>
 <li><code>mount [ -t文件系统 ]  [-o 特殊选项]  设备文件名  挂载点</code></li>
 <li>选项：<ul>
@@ -547,14 +632,12 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 </ul>
 </li>
 <li>卸载命令：<code>umount  设备文件名或挂载点</code></li>
-<li><p>注：先退出光盘的目录；一定要先卸载才能拿出光盘</p>
-</li>
-<li><p>挂载U盘：<code>mount  -t  vfat  /dev/sdb1  /mnt/usb</code></p>
-</li>
+<li>注：先退出光盘的目录；一定要先卸载才能拿出光盘</li>
+<li>挂载U盘：<code>mount  -t  vfat  /dev/sdb1  /mnt/usb</code></li>
 <li>查看U盘设备文件名：<code>fdisk  -l</code></li>
 <li>注：LInux默认不支持NTFS文件系统</li>
 </ul>
-<h2 id="用户登录查看"><a href="#用户登录查看" class="headerlink" title="用户登录查看"></a>用户登录查看</h2><p><em>w 用户名</em></p>
+<h3 id="用户登录查看"><a href="#用户登录查看" class="headerlink" title="用户登录查看"></a>用户登录查看</h3><p><em>w 用户名</em></p>
 <ul>
 <li>查看登录用户信息</li>
 </ul>
@@ -574,7 +657,7 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li>查看所有用户的最后一次登录时间</li>
 </ul>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjo0yw43bej30qc08tae6.jpg" alt=""></p>
-<h2 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h2><p><em>history</em></p>
+<h3 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h3><p><em>history</em></p>
 <ul>
 <li><code>history  [选项]  [历史命令保存文件]</code></li>
 <li>选项：<ul>
@@ -585,6 +668,90 @@ Linux中一块硬盘只能存在4个主分区：sda1、sda2、sda3和sda4。
 <li>历史命令的调用：</li>
 </ul>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjo0zpn0qgj30x107gdk5.jpg" alt=""></p>
+<h3 id="计算机状态"><a href="#计算机状态" class="headerlink" title="计算机状态"></a>计算机状态</h3><p><em>date</em></p>
+<ul>
+<li>查看当前时间</li>
+<li><code>date</code></li>
+<li>设置时间：<code>date -s &quot;2017-06-28 12:00:00&quot;</code></li>
+</ul>
+<p><em>clear</em></p>
+<ul>
+<li>清屏</li>
+</ul>
+<p><em>df</em></p>
+<ul>
+<li>查看磁盘信息</li>
+<li><code>df -b,-k,-m,-g</code> 按照byte,kb,mb,g格式显示磁盘信息</li>
+<li><code>df -h</code> 友好的格式显示磁盘信息</li>
+</ul>
+<p><em>ps</em></p>
+<ul>
+<li>查看正在运行进程的状态</li>
+<li><code>ps</code></li>
+<li><code>ps –ef</code> 查看所有进程</li>
+<li><code>ps –ef | grep ssh</code> 查找某一进程</li>
+</ul>
+<p><em>kill</em></p>
+<ul>
+<li>杀掉进程</li>
+<li><code>kill pid</code> : 杀掉进程</li>
+<li><code>kill 2868</code>: 杀掉2868编号的进程</li>
+<li><code>kill -9 pid</code>: 强制杀掉进程</li>
+<li><code>kill -9 2868</code>: 强制杀死进程2868</li>
+</ul>
+<h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><h3 id="操作模式："><a href="#操作模式：" class="headerlink" title="操作模式："></a>操作模式：</h3><ul>
+<li>输入模式：“i” 切换</li>
+<li>命令模式：默认的模式；用于输入命令；输入命令，不能查看，立即执行</li>
+<li>底行模式：“esc” 切换 ；“:wq” 保存退出；输入命令，底行查看，回车执行</li>
+</ul>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><p><em>vim “文件名”</em></p>
+<ul>
+<li>创建并打开文件</li>
+</ul>
+<p><em>vim + “文件名”</em></p>
+<ul>
+<li>打开文件后 光标定位到最后一行</li>
+</ul>
+<p><em>vim +3  “文件名”</em></p>
+<ul>
+<li>打开文件后 光标定位到第三行</li>
+</ul>
+<p><em>vim  +/imooc  “文件名”</em></p>
+<ul>
+<li>打开文件  光标定位到imooc第一次出现的行</li>
+<li>按 “n” 切换下一个imooc出现的地方</li>
+</ul>
+<p><em>vim  “文件名1”  “文件名2” “文件名3”</em></p>
+<ul>
+<li>创建多个文件  并打开第一个文件</li>
+<li>在底行模式输入 “:n” 切换下一个文件</li>
+<li>底行模式 “:N” 或 “:prev” 切换上一个文件</li>
+</ul>
+<h3 id="底行模式"><a href="#底行模式" class="headerlink" title="底行模式"></a>底行模式</h3><p><code>:wq</code> 保存并退出</p>
+<p><code>:w</code>保存</p>
+<p><code>:q</code>退出文件</p>
+<p><code>:!</code> 强制执行</p>
+<p><code>:!q</code> 不保存 并退出</p>
+<p><code>:ls</code> 列出打开的所有文件</p>
+<p><code>:n</code>切换后一个文件</p>
+<p><code>:N</code> 切换前一个文件</p>
+<p><code>:3</code> 光标定位到第三行</p>
+<p><code>/xxx</code> 从光标定位开始向后搜索“xxx”第一次出现的行</p>
+<p><code>?xxx</code> 从光标定位开始向前搜索“xxx” 第一次出现的行</p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><code>h</code>&emsp;&emsp;&emsp;&emsp;光标左移</p>
+<p><code>j</code>&emsp;&emsp;&emsp;&emsp;光标下移</p>
+<p><code>k</code>&emsp;&emsp;&emsp;&emsp;光标上移</p>
+<p><code>l</code>&emsp;&emsp;&emsp;&emsp;光标右移</p>
+<p><code>“Ctrl” + f</code>&emsp;&emsp;&emsp;向下翻页</p>
+<p><code>“Ctrl” + b</code>&emsp;&emsp;&emsp;向上翻页</p>
+<p><code>“Ctrl” + d</code>&emsp;&emsp;&emsp;向下翻半页</p>
+<p><code>“Ctrl” + u</code>&emsp;&emsp;&emsp;向下翻半页</p>
+<p><code>dd</code>&emsp;&emsp;&emsp;&emsp;删除光标所在行</p>
+<p><code>o</code>&emsp;&emsp;&emsp;&emsp;在光标所在行的下方插入一行并切换到输入模式</p>
+<p><code>yy</code>&emsp;&emsp;&emsp;&emsp;复制光标所在行</p>
+<p><code>p</code>&emsp;&emsp;&emsp;&emsp;在光标所在行的下方粘贴</p>
+<p><code>P</code>&emsp;&emsp;&emsp;&emsp;在光标所在行的上方粘贴</p>
+<h3 id="VIM指令图"><a href="#VIM指令图" class="headerlink" title="VIM指令图"></a>VIM指令图</h3><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjongb0e6xj30sg0k3kag.jpg" alt=""></p>
 
 
                 
