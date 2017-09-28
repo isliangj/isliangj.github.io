@@ -97,6 +97,10 @@ header {
             #archive .content .year-list ul li a:hover {
               color: #007fff; }
 
+@media (min-width: 1032px) {
+  #archive {
+    width: 1000px; } }
+
 @media (max-width: 1032px) {
   #archive {
     width: 100%;
@@ -169,6 +173,10 @@ header {
           transition: 0.3s all; }
           #post aside .toc-container ol a:hover, #post aside .toc-container ol a.active {
             color: #007fff; }
+
+@media (min-width: 1032px) {
+  #post {
+    width: 1000px; } }
 
 @media (max-width: 1032px) {
   #post {
@@ -657,6 +665,10 @@ header {
   #index aside .links a {
     display: block; }
 
+@media (min-width: 1032px) {
+  #index {
+    width: 1000px; } }
+
 @media (max-width: 700px) {
   #index {
     flex-direction: column; }
@@ -734,6 +746,10 @@ header {
     margin-top: 20px; }
   #tags .post-preview > a .post-subtitle {
     font-size: 12px; }
+
+@media (min-width: 1032px) {
+  #tags {
+    width: 1000px; } }
 
 @media (max-width: 700px) {
   #tags .tags-container {
