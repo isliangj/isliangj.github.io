@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
   margin: 0;
@@ -17,6 +18,9 @@ main {
   max-width: 1000px;
   padding: 0 16px;
   margin: 0 auto; }
+
+.article-category {
+  display: inline-block; }
 
 footer .copyright {
   max-width: 1000px;
@@ -62,6 +66,16 @@ header {
     padding: 0 0 0 5px; }
     header .right-header li.nav-item:last-child {
       padding-right: 0; } }
+
+.post-meta .tag {
+  position: relative;
+  padding-right: 4px; }
+  .post-meta .tag:not(:last-of-type)::after {
+    content: '·';
+    position: absolute;
+    right: -4px; }
+  .post-meta .tag:hover::after {
+    color: #6E7173; }
 
 #archive {
   width: 1000px; }
@@ -135,6 +149,18 @@ header {
     padding: 20px 25px;
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
+  #post .content .post-meta {
+    font-size: 14px;
+    font-weight: 200;
+    color: #6E7173;
+    margin-bottom: 11px;
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif; }
+    #post .content .post-meta a {
+      color: #404040;
+      font-size: 14px;
+      font-weight: 200; }
+      #post .content .post-meta a:hover {
+        color: #007fff; }
   #post > .content {
     width: 66%; }
   #post aside {
@@ -204,6 +230,8 @@ header {
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word; }
+  .markdown-body a {
+    color: #0366d6; }
   .markdown-body figure {
     margin: 0; }
     .markdown-body figure table {
@@ -484,7 +512,17 @@ header {
   .markdown-body .highlight {
     margin-bottom: 16px; }
     .markdown-body .highlight table tr {
-      border-top: none; }
+      border-top: none;
+      background-color: transparent; }
+    .markdown-body .highlight table td {
+      padding: 0;
+      border: none; }
+      .markdown-body .highlight table td .line {
+        height: 17px; }
+    .markdown-body .highlight table .gutter pre {
+      padding-right: 0; }
+    .markdown-body .highlight table .code {
+      vertical-align: top; }
   .markdown-body .highlight pre {
     margin-bottom: 0;
     word-break: normal; }
@@ -594,32 +632,24 @@ header {
         font-size: 25px;
         font-weight: 700;
         transition: 0.3s all; }
-    #index .posts-list section .post-meta {
-      font-size: 14px;
-      font-weight: 200;
-      color: #6E7173; }
-      #index .posts-list section .post-meta .tag {
-        display: inline-block;
-        padding: 0 10px;
-        margin-bottom: 5px;
-        cursor: pointer;
-        border: 1px solid #6E7173;
-        border-radius: 20px;
-        transition: 0.3s all; }
-        #index .posts-list section .post-meta .tag:hover {
-          color: #ffffff;
-          border-color: #007fff;
-          background-color: #007fff; }
+    #index .posts-list section .post-img {
+      margin-bottom: 5px;
+      transition: 0.3s all; }
+      #index .posts-list section .post-img img {
+        width: 100%;
+        vertical-align: middle; }
     #index .posts-list section .post-content {
       color: #a3a3a3;
       margin-bottom: 8px;
       transition: 0.3s all; }
-      #index .posts-list section .post-content:hover {
-        color: #007fff; }
       #index .posts-list section .post-content * {
         margin: 0;
         padding: 0;
         text-align: justify; }
+    #index .posts-list section .post-meta {
+      font-size: 14px;
+      font-weight: 200;
+      color: #6E7173; }
 
 #index aside {
   position: sticky;
@@ -645,6 +675,11 @@ header {
       color: #909090;
       padding: 20px;
       font-size: 1em; }
+      #index aside > div > .content a {
+        color: #909090;
+        transition: 0.3s all; }
+        #index aside > div > .content a:hover {
+          color: #007fff; }
   #index aside .search form input {
     background: #fff 8px 9px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6%2BR8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA%2FN0AAINkAABw6AAA7GgAADA%2BAAAQkOTsmeoAAAESSURBVHjajNCxS9VRGMbxz71E4OwgoXPQxVEpXCI47%2BZqGP0LCoJO7UVD3QZzb3SwcHB7F3Uw3Zpd%2FAPCcJKG7Dj4u%2FK7Pwp94HDg5Xyf5z1Pr9YKImKANTzFXxzjU2ae6qhXaxURr%2FAFl9hHDy%2FwEK8z89sYVEp5gh84wMvMvGiSJ%2FEV85jNzLMR1McqfmN5BEBmnmMJFSvtpH7jdJiZv7q7Z%2BZPfMdcF6rN%2FT%2F1m2LGBkd4HhFT3dcRMY2FpskxaLNpayciHrWAGeziD7b%2BVfkithuTk8bkGa4wgWFmbrSTZOYeBvjc%2BucQj%2FEe6xHx4Taq1nrnKaW8K6XUUsrHWuvNevdRRLzFGwzvDbXAB9cDAHvhedDruuxSAAAAAElFTkSuQmCC);
     padding: 7px 11px 7px 28px;
@@ -662,12 +697,51 @@ header {
       height: 185px;
       object-fit: cover;
       object-position: center center; }
+  #index aside .categories .category-list {
+    padding-left: 0;
+    margin: 0; }
+  #index aside .categories .category-list-child {
+    padding-left: 1.3em; }
+    #index aside .categories .category-list-child li {
+      list-style: disc; }
   #index aside .links a {
     display: block; }
 
+.paging {
+  max-width: 1000px;
+  padding: 0 16px;
+  margin: 0 auto;
+  padding-top: 1em; }
+  .paging .paging-container {
+    display: flex;
+    justify-content: space-between;
+    width: 66%; }
+    .paging .paging-container > div {
+      display: inline-block;
+      border-radius: 2px;
+      font-size: 14px;
+      transition: 0.3s all; }
+      .paging .paging-container > div a {
+        display: inline-block;
+        padding: 5px 15px; }
+      .paging .paging-container > div:hover {
+        border-color: #999; }
+    .paging .paging-container .page-prev {
+      border: 1px solid #ddd; }
+    .paging .paging-container .page-next {
+      text-align: right;
+      border: 1px solid #ddd; }
+
 @media (min-width: 1032px) {
   #index {
+    width: 1000px; }
+  .paging {
     width: 1000px; } }
+
+@media (max-width: 1032px) {
+  .paging {
+    width: 100%;
+    box-sizing: border-box; } }
 
 @media (max-width: 700px) {
   #index {
@@ -679,7 +753,9 @@ header {
       position: static;
       order: 0; }
       #index aside > div {
-        margin-left: 0; } }
+        margin-left: 0; }
+  .paging .paging-container {
+    width: 100%; } }
 
 #tags .tags-container {
   width: 66%;

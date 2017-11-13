@@ -55,17 +55,33 @@
   <main id='post'>
   <div class="content">
     <article>
-        <section class="content markdown-body"><h1 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>申请GitHub账号后 创建一个仓库</p>
+        <section class="content markdown-body">
+          <h1>搭建博客（GitHub Pages + Hexo）</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年09月08日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+
+            
+          </div>
+          <h1 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>申请GitHub账号后 创建一个仓库</p>
 <p>仓库命名规则为：yourusername.github.io</p>
 <p>其中 yourusername 为你的GitHub用户名</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjnsaqfy41j30l00eh75y.jpg" alt=""></p>
 <h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>要安装 Git 和 Node.js 环境</p>
-<h2 id="下载安装hexo"><a href="#下载安装hexo" class="headerlink" title="下载安装hexo"></a>下载安装hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>安装好后，在终输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo</div></pre></td></tr></table></figure></p>
+<h2 id="下载安装hexo"><a href="#下载安装hexo" class="headerlink" title="下载安装hexo"></a>下载安装hexo</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<p>安装好后，在终输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo</div></pre></td></tr></table></figure>
 <p>出现下图，表示安装成功：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjnsbttgo9j30hh09gjsk.jpg" alt=""></p>
 <h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>打开终端 cd 到桌面或指定目录 并使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ hexo init yourname</div><div class="line"></div><div class="line">$ cd yourname</div><div class="line"></div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo init yourname</div><div class="line"></div><div class="line">$ cd yourname</div><div class="line"></div><div class="line">$ npm install</div></pre></td></tr></table></figure>
 <p>其中 yourname 是文件名，可随意取</p>
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>.</p>
 <p>├── .deploy         #需要部署的文件</p>
@@ -78,36 +94,37 @@
 <p>├── themes          #主题</p>
 <p>├── _config.yml     #全局配置文件</p>
 <p>└── package.json    #npm 依赖等</p>
-<h2 id="config-yml-文件配置"><a href="#config-yml-文件配置" class="headerlink" title="_config.yml 文件配置"></a>_config.yml 文件配置</h2><h3 id="1-修改网站相关信息"><a href="#1-修改网站相关信息" class="headerlink" title="1.修改网站相关信息"></a>1.修改网站相关信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">title: inerdstack</div><div class="line"></div><div class="line">subtitle: the stack of it nerds</div><div class="line"></div><div class="line">description: start from zero</div><div class="line"></div><div class="line">author: inerdstack</div><div class="line"></div><div class="line">language: zh-CN</div><div class="line"></div><div class="line">timezone: Asia/Shanghai</div></pre></td></tr></table></figure>
-<h3 id="2-主题设置"><a href="#2-主题设置" class="headerlink" title="2.主题设置"></a>2.主题设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: hexo-theme-clean-blog</div></pre></td></tr></table></figure>
-<h3 id="3-配置部署"><a href="#3-配置部署" class="headerlink" title="3.配置部署"></a>3.配置部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"></div><div class="line">  type: git</div><div class="line"></div><div class="line">  repo: https://github.com/isliangj/isliangj.github.io.git</div><div class="line"></div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<h2 id="config-yml-文件配置"><a href="#config-yml-文件配置" class="headerlink" title="_config.yml 文件配置"></a>_config.yml 文件配置</h2><h3 id="1-修改网站相关信息"><a href="#1-修改网站相关信息" class="headerlink" title="1.修改网站相关信息"></a>1.修改网站相关信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">title: inerdstack</div><div class="line"></div><div class="line">subtitle: the stack of it nerds</div><div class="line"></div><div class="line">description: start from zero</div><div class="line"></div><div class="line">author: inerdstack</div><div class="line"></div><div class="line">language: zh-CN</div><div class="line"></div><div class="line">timezone: Asia/Shanghai</div></pre></td></tr></table></figure>
+<h3 id="2-主题设置"><a href="#2-主题设置" class="headerlink" title="2.主题设置"></a>2.主题设置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">theme: hexo-theme-clean-blog</div></pre></td></tr></table></figure>
+<h3 id="3-配置部署"><a href="#3-配置部署" class="headerlink" title="3.配置部署"></a>3.配置部署</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">deploy:</div><div class="line"></div><div class="line">  type: git</div><div class="line"></div><div class="line">  repo: https://github.com/isliangj/isliangj.github.io.git</div><div class="line"></div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 <p>其中‘repo’的地址为前面建好仓库的地址；</p>
 <p>‘branch’是项目的分支，我们默认用主分支master。</p>
 <p><em><em>注意：</em></em></p>
 <p>每一项的填写，其 : 后面都要保留一个空格；</p>
 <p>‘deploy:’ 后的子项前要加 ‘tab键’。</p>
-<h2 id="编写文章并本地发布"><a href="#编写文章并本地发布" class="headerlink" title="编写文章并本地发布"></a>编写文章并本地发布</h2><p>在终端进入项目文件后，输入一下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;文章标题&quot;</div></pre></td></tr></table></figure></p>
+<h2 id="编写文章并本地发布"><a href="#编写文章并本地发布" class="headerlink" title="编写文章并本地发布"></a>编写文章并本地发布</h2><p>在终端进入项目文件后，输入一下命令：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo new &quot;文章标题&quot;</div></pre></td></tr></table></figure></p>
 <p>在文件夹 _<em>source -&gt; _post</em>_ 中找到Markdown文件，并用编译器打开。</p>
 <p>编写好内容后，保存。</p>
 <p>在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s / hexo server</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo s / hexo server</div></pre></td></tr></table></figure>
 <p>出现下图表示发布成功:</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjnsc9o7zvj30fy01l0ss.jpg" alt=""></p>
 <p>在浏览器中输入：</p>
 <p><em><a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></em></p>
 <p>“Ctrl + C” 可停止运行</p>
-<h2 id="发布到GitHub-Pages"><a href="#发布到GitHub-Pages" class="headerlink" title="发布到GitHub Pages"></a>发布到GitHub Pages</h2><p>发布之前下载安装 <em>hexo-deployer-git</em> ，在项目文件中输入下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<h2 id="发布到GitHub-Pages"><a href="#发布到GitHub-Pages" class="headerlink" title="发布到GitHub Pages"></a>发布到GitHub Pages</h2><p>发布之前下载安装 <em>hexo-deployer-git</em> ，在项目文件中输入下面命令：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
 <p>发布命令，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ hexo clean  //清除缓存</div><div class="line"></div><div class="line">$ hexo g  //生成本地发布文件夹</div><div class="line"></div><div class="line">$ hexo d  //发布到github pages</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo clean  //清除缓存</div><div class="line"></div><div class="line">$ hexo g  //生成本地发布文件夹</div><div class="line"></div><div class="line">$ hexo d  //发布到github pages</div></pre></td></tr></table></figure>
 <p>然后就可以在博客地址中查看</p>
-<p><em><a href="https://youusername.github.io" target="_blank" rel="external">https://youusername.github.io</a></em></p>
+<p><em><a href="https://yourusername.github.io" target="_blank" rel="external">https://yourusername.github.io</a></em></p>
 <h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>在Hexo官网 <em><a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a></em> 中寻找自己的喜欢的主题</p>
 <p>复制主题的 GitHub 地址</p>
-<p>在终端中用 cd 进入<em><em>themes</em></em> 文件夹，执行下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone &quot;主题GitHub地址&quot;</div></pre></td></tr></table></figure></p>
+<p>在终端中用 cd 进入<em><em>themes</em></em> 文件夹，执行下面命令：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone &quot;主题GitHub地址&quot;</div></pre></td></tr></table></figure></p>
 <p>把 <em>_config.yml</em> 文件中的<em>themes</em>选项设置为：主题文件名</p>
 <h2 id="图片的加载"><a href="#图片的加载" class="headerlink" title="图片的加载"></a>图片的加载</h2><p>在 <em>source</em> 文件夹下创建文件夹 <em>“images”</em></p>
-<p>在文章中使用相对路径即可，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![图片注释](/images/myImg.png “图片标题”)</div></pre></td></tr></table></figure></p>
-</section>
+<p>在文章中使用相对路径即可，例如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">![图片注释](/images/myImg.png “图片标题”)</div></pre></td></tr></table></figure></p>
+
+        </section>
     </article>
     
         <!-- disqus 评论框 start -->
@@ -118,14 +135,17 @@
         </div>
         <!-- disqus 评论框 end -->
     
+        
   </div>
   <aside>
+    
     <div class="toc-container">
         <h1>目录</h1>
         <div class="content">
             <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Github-Pages"><span class="toc-number">1.</span> <span class="toc-text">Github Pages</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建仓库"><span class="toc-number">1.1.</span> <span class="toc-text">创建仓库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装前提"><span class="toc-number">2.1.</span> <span class="toc-text">安装前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载安装hexo"><span class="toc-number">2.2.</span> <span class="toc-text">下载安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建站"><span class="toc-number">2.3.</span> <span class="toc-text">建站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录结构"><span class="toc-number">2.4.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config-yml-文件配置"><span class="toc-number">2.5.</span> <span class="toc-text">_config.yml 文件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修改网站相关信息"><span class="toc-number">2.5.1.</span> <span class="toc-text">1.修改网站相关信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-主题设置"><span class="toc-number">2.5.2.</span> <span class="toc-text">2.主题设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置部署"><span class="toc-number">2.5.3.</span> <span class="toc-text">3.配置部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写文章并本地发布"><span class="toc-number">2.6.</span> <span class="toc-text">编写文章并本地发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到GitHub-Pages"><span class="toc-number">2.7.</span> <span class="toc-text">发布到GitHub Pages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更换主题"><span class="toc-number">2.8.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片的加载"><span class="toc-number">2.9.</span> <span class="toc-text">图片的加载</span></a></li></ol></li></ol>
         </div>
     </div>
+    
   </aside>
 </main>
 
@@ -170,6 +190,7 @@
 <!-- disqus 公共JS代码 end -->
 
 
+
   <footer>
   <div class="copyright">
     <div>
@@ -184,6 +205,7 @@
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
 <script>
   var isDown = true
   var oldY = 0
@@ -191,7 +213,7 @@
 
   document.body.addEventListener('touchstart', function(){});
   
-  window.addEventListener('scroll', e => {
+  window.addEventListener('scroll', _.throttle(e => {
     var currentY = window.scrollY
     if((oldY - currentY) < 0) {
       isDown = true
@@ -199,7 +221,7 @@
       isDown = false
     }
     oldY = currentY
-  })
+  }, 250))
 
   $("article img").each(function() {
       var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";

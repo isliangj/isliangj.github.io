@@ -55,8 +55,24 @@
   <main id='post'>
   <div class="content">
     <article>
-        <section class="content markdown-body"><p>欢迎来到<code>isliangj</code>的个人技术博客</p>
-</section>
+        <section class="content markdown-body">
+          <h1>HelloWorld</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年09月08日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#练习" class='tag'>练习</a>
+
+
+            
+          </div>
+          <p>欢迎来到<code>isliangj</code>的个人技术博客</p>
+
+        </section>
     </article>
     
         <!-- disqus 评论框 start -->
@@ -67,14 +83,10 @@
         </div>
         <!-- disqus 评论框 end -->
     
+        
   </div>
   <aside>
-    <div class="toc-container">
-        <h1>目录</h1>
-        <div class="content">
-            
-        </div>
-    </div>
+    
   </aside>
 </main>
 
@@ -119,6 +131,7 @@
 <!-- disqus 公共JS代码 end -->
 
 
+
   <footer>
   <div class="copyright">
     <div>
@@ -133,6 +146,7 @@
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
 <script>
   var isDown = true
   var oldY = 0
@@ -140,7 +154,7 @@
 
   document.body.addEventListener('touchstart', function(){});
   
-  window.addEventListener('scroll', e => {
+  window.addEventListener('scroll', _.throttle(e => {
     var currentY = window.scrollY
     if((oldY - currentY) < 0) {
       isDown = true
@@ -148,7 +162,7 @@
       isDown = false
     }
     oldY = currentY
-  })
+  }, 250))
 
   $("article img").each(function() {
       var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
