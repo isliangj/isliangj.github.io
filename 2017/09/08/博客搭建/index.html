@@ -83,17 +83,7 @@
 <h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>打开终端 cd 到桌面或指定目录 并使用如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo init yourname</div><div class="line"></div><div class="line">$ cd yourname</div><div class="line"></div><div class="line">$ npm install</div></pre></td></tr></table></figure>
 <p>其中 yourname 是文件名，可随意取</p>
-<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>.</p>
-<p>├── .deploy         #需要部署的文件</p>
-<p>├── node_modules    #Hexo插件</p>
-<p>├── public          #生成的静态网页文件</p>
-<p>├── scaffolds       #模板</p>
-<p>├── source          #博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</p>
-<p>| ├── _drafts       #草稿</p>
-<p>| └── _posts        #文章</p>
-<p>├── themes          #主题</p>
-<p>├── _config.yml     #全局配置文件</p>
-<p>└── package.json    #npm 依赖等</p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line"></div><div class="line">├── .deploy         #需要部署的文件</div><div class="line"></div><div class="line">├── node_modules    #Hexo插件</div><div class="line"></div><div class="line">├── public          #生成的静态网页文件</div><div class="line"></div><div class="line">├── scaffolds       #模板</div><div class="line"></div><div class="line">├── source          #博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</div><div class="line"></div><div class="line">| ├── _drafts       #草稿</div><div class="line"></div><div class="line">| └── _posts        #文章</div><div class="line"></div><div class="line">├── themes          #主题</div><div class="line"></div><div class="line">├── _config.yml     #全局配置文件</div><div class="line"></div><div class="line">└── package.json    #npm 依赖等</div></pre></td></tr></table></figure>
 <h2 id="config-yml-文件配置"><a href="#config-yml-文件配置" class="headerlink" title="_config.yml 文件配置"></a>_config.yml 文件配置</h2><h3 id="1-修改网站相关信息"><a href="#1-修改网站相关信息" class="headerlink" title="1.修改网站相关信息"></a>1.修改网站相关信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">title: inerdstack</div><div class="line"></div><div class="line">subtitle: the stack of it nerds</div><div class="line"></div><div class="line">description: start from zero</div><div class="line"></div><div class="line">author: inerdstack</div><div class="line"></div><div class="line">language: zh-CN</div><div class="line"></div><div class="line">timezone: Asia/Shanghai</div></pre></td></tr></table></figure>
 <h3 id="2-主题设置"><a href="#2-主题设置" class="headerlink" title="2.主题设置"></a>2.主题设置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">theme: hexo-theme-clean-blog</div></pre></td></tr></table></figure>
 <h3 id="3-配置部署"><a href="#3-配置部署" class="headerlink" title="3.配置部署"></a>3.配置部署</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">deploy:</div><div class="line"></div><div class="line">  type: git</div><div class="line"></div><div class="line">  repo: https://github.com/isliangj/isliangj.github.io.git</div><div class="line"></div><div class="line">  branch: master</div></pre></td></tr></table></figure>
