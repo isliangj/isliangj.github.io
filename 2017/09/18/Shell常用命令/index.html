@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>Shell常用命令 | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>Shell常用命令</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年09月18日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+
+            
+          </div>
+          <h2 id="Linux-系统介绍"><a href="#Linux-系统介绍" class="headerlink" title="Linux 系统介绍"></a>Linux 系统介绍</h2><h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><ul>
+<li>硬盘分为：IDE、SCSI 和 SATA 硬盘。Linux 中 IDE 接口的设备被称为 hd，SCSI 和 SATA 接口的设备被称为 sd。第一块硬盘是 sda，第二块为 sdb……</li>
+<li>Linux 中一块硬盘只能存在 4 个主分区：sda1、sda2、sda3 和 sda4。</li>
+<li>主分区中 sda4 一般作为扩展分区（只能有一个），扩展分区不写入数据，只是包含逻辑分区，逻辑分区就不限制个数，标识从 5 开始。</li>
+</ul>
+<h3 id="与-Windows-的区别"><a href="#与-Windows-的区别" class="headerlink" title="与 Windows 的区别"></a>与 Windows 的区别</h3><ul>
+<li>Linux 严格区分大小写（Linux 是命令行 Windows 是 dos 界面）</li>
+<li>Linux 中 一切皆文件，包括硬件、用户</li>
+<li>Linux 中 不靠扩展名区分文件类型，靠权限区分，但有约定俗称的扩展名</li>
+<li>Linux 中 不能直接安装和运行 Windows 的程序</li>
+</ul>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><ol>
+<li><p>先分 200M 给<code>/boot</code>用于启动</p>
+</li>
+<li><p>后分 2048M（两倍于内存大小但不超过 2G）给<code>swap</code>交换分区</p>
+</li>
+<li><p>之后分 1024M 给<code>/home</code>存放登陆用户的配置和私人文件</p>
+</li>
+<li><p>最后把剩余的空间都分配给<code>/</code>根分区，存放系统所必须的文件</p>
+</li>
+</ol>
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><p>在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</p>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><ul>
+<li>FAT16（File Allocation Table 文件分配表）</li>
+<li>FAT32、NTFS（New Technology File System）</li>
+<li>EXT2（second extended filesystem 第二代扩展文件系统）</li>
+<li>EXT3</li>
+<li>EXT4</li>
+</ul>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ul>
+<li><code>Ctrl + c</code>&emsp;&emsp;&emsp;强制终止当前命令</li>
+<li><code>Ctrl + l</code>&emsp;&emsp;&emsp;清屏</li>
+<li><code>Ctrl + a</code>&emsp;&emsp;&emsp;光标移动到命令行首</li>
+<li><code>Ctrl + e</code>&emsp;&emsp;&emsp;光标移动到命令行尾</li>
+<li><code>Ctrl + u</code>&emsp;&emsp;&emsp;从光标所在位置删除到行首</li>
+<li><code>Ctrl + z</code>&emsp;&emsp;&emsp;把命令放在后台</li>
+<li><code>Ctrl + r</code>&emsp;&emsp;&emsp;在历史命令中搜索</li>
+</ul>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjnyn0obcnj30yn12kdky.jpg" alt=""></p>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><p><em>-rw-rw-r–详解</em></p>
+<ul>
+<li>第一位: -:表示普通文件,d: 表示目录, l:表示符号链接</li>
+<li>第二到第十位: 如下所示:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">属主（user）    属组（group）    其他用户</div><div class="line">r    w    x    r    w    x    r    w    x</div><div class="line">4    2    1    4    2    1    4    2    1</div></pre></td></tr></table></figure>
+<ul>
+<li>-表示没有权限,r:表示读权限, w:表示写权限,x:表示执行权限</li>
+</ul>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><ul>
+<li>普通文件（-）： 包括文本文件、数据文件、可执行的二进制程序文件等。</li>
+<li>目录文件（d）： Linux 系统把目录看成是一种特殊的文件，利用它构成文件系统的树型结构。</li>
+<li>设备文件： Linux 系统把每一个设备都看成是一个文件</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h3><p><em>mkdir</em></p>
+<ul>
+<li>新建目录</li>
+<li>英文：mack directories</li>
+<li><code>mkdir [选项] [目录名]</code></li>
+<li>-p 递归创建</li>
+</ul>
+<p><em>cd</em></p>
+<ul>
+<li>切换所在目录</li>
+<li>英文：change directory</li>
+<li><code>cd [目录]</code></li>
+<li>简化操作：<ul>
+<li>cd ~ / cd &emsp;&emsp;&emsp;进入当前用户的家目录</li>
+<li>cd - &emsp;&emsp;&emsp;&emsp;&emsp;进入上次目录</li>
+<li>cd ..&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入上一级目录（加空格）</li>
+<li>cd . &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;进入当前目录（无用）</li>
+</ul>
+</li>
+</ul>
+<p><em>ls</em></p>
+<ul>
+<li>显示当前目录内容</li>
+<li>英文：list</li>
+<li><code>ls [参数] [路径或文件名]</code></li>
+<li>显示所有文件或目录（包含隐藏的文件）:<code>ls -a</code></li>
+<li>显示详细信息：<code>ls -l 缩写 ll</code></li>
+<li>友好显示文件大小：<code>ll -h</code></li>
+</ul>
+<p><em>du</em></p>
+<ul>
+<li>显示目录或文件的大小</li>
+<li><code>du –h</code></li>
+</ul>
+<p><em>cat</em></p>
+<ul>
+<li>查看整个文件内容</li>
+<li><code>cat [参数] 文件名</code></li>
+</ul>
+<p><em>more</em></p>
+<ul>
+<li>查看大文件一屏幕显示不完内容</li>
+<li>空格或者回车键显示下一行内容</li>
+<li>使用<code>q</code>或者<code>ctrl+c</code>退出</li>
+</ul>
+<p><em>less</em></p>
+<ul>
+<li>省略大文件内容</li>
+<li>通过<code>PgUp</code>、<code>PgDn</code>键来控制</li>
+</ul>
+<p><em>pwd</em></p>
+<ul>
+<li>查询所在目录位置</li>
+<li>英文：print working directory</li>
+</ul>
+<p><em>rmdir</em></p>
+<ul>
+<li>删除空目录（少用）</li>
+<li>英文：remove empty directories</li>
+<li><code>rmdir [目录名]</code></li>
+</ul>
+<p><em>rm</em></p>
+<ul>
+<li>删除文件或目录（小心）</li>
+<li><code>rm -rf [文件或目录]</code></li>
+<li>英文：remove</li>
+<li>选项：<ul>
+<li>-r&emsp;&emsp;&emsp;删除目录</li>
+<li>-f&emsp;&emsp;&emsp;强制删除</li>
+</ul>
+</li>
+</ul>
+<p><em>touch</em></p>
+<ul>
+<li>创建空文件</li>
+<li><code>touch 文件名</code></li>
+</ul>
+<p><em>cp</em></p>
+<ul>
+<li>复制命令</li>
+<li><code>cp [选项] [原文件或目录] [目标目录]</code></li>
+<li>英文：copy</li>
+<li>选项：<ul>
+<li>-r &emsp;&emsp;复制目录</li>
+<li>-p &emsp;&emsp;连带文件属性复制</li>
+<li>-d &emsp;&emsp;若源文件是链接文件，则复制链接属性</li>
+<li>-a &emsp;&emsp;相当于 -pdr 所有的属性都一样</li>
+</ul>
+</li>
+</ul>
+<p><em>mv</em></p>
+<ul>
+<li>剪切或改名命令</li>
+<li>英文：move</li>
+<li><code>mv [原文件或目录] [目标目录/新名字]</code></li>
+<li>注：剪切目录的时候不需要加 -r</li>
+</ul>
+<p><em>wget</em></p>
+<ul>
+<li>下载文件</li>
+<li><code>wget url</code></li>
+</ul>
+<h3 id="链接命令"><a href="#链接命令" class="headerlink" title="链接命令"></a>链接命令</h3><p><em>ln</em></p>
+<ul>
+<li>链接命令</li>
+<li><code>ln -s [原文件] [目标文件]</code></li>
+<li>英文：link</li>
+<li>功能描述：生成链接文件</li>
+<li>选项：<ul>
+<li>-s 创建软链接</li>
+</ul>
+</li>
+<li>注：软链接的路径一定要写绝对路径</li>
+<li>硬链接：（不建议使用）<ul>
+<li>可以看做是同一个文件</li>
+<li>可通过 i 节点识别</li>
+<li>不能跨分区</li>
+<li>不能针对目录使用</li>
+</ul>
+</li>
+<li>软链接：<ul>
+<li>类似于 Windows 的快捷方式</li>
+<li>拥有自己的 i 节点 和 block 块，只保存原文件的文件名和 i 节点，并没有实际的数据</li>
+<li>修改任意文件，另一个都改变</li>
+<li>删除原文件，软链接不能使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h3><p><em>locate</em></p>
+<ul>
+<li>在后台数据库中按文件名搜索 搜索速度更快</li>
+<li><code>locate 文件名</code></li>
+<li>后台数据库 <code>/var/lib/mlocate</code> （一天一更新）</li>
+<li>更新数据库命令 <code>updatedb</code></li>
+<li>缺点：只能通过文件名搜索</li>
+</ul>
+<p><em>whereis</em></p>
+<ul>
+<li>搜索命令的命令</li>
+<li><code>whereis 命令名</code></li>
+<li>搜索命令所在路径及帮助文档的所在位置</li>
+<li>选项：<ul>
+<li>-b 只查找可执行文件</li>
+<li>-m 只查找帮助文件</li>
+</ul>
+</li>
+</ul>
+<p><em>which</em></p>
+<ul>
+<li>搜索命令所在路径及别名</li>
+<li>which 文件名</li>
+</ul>
+<p><em>find</em></p>
+<ul>
+<li>搜索文件</li>
+<li><code>find [搜索范围] [搜索条件]</code></li>
+<li>find / -name install.log</li>
+<li>避免大范围搜索 会非常耗资源</li>
+<li>find 是搜索符合条件的文件名，如果需要模糊查询，使用通配符匹配通配符是完全匹配：<ul>
+<li>- 匹配任意内容</li>
+<li>? 匹配任意一个字符</li>
+<li style="list-style: none"><input type="checkbox"> 匹配任意一个中括号内的字符</li>
+</ul>
+</li>
+<li>选项：<ul>
+<li>不区分大小写 <code>find /root -iname install.log</code></li>
+<li>按照所有者搜索 <code>find /root -user root</code></li>
+<li>查找没有所有者的文件 <code>find /root -nouser</code></li>
+<li>查找 10 天前修改的文件 <code>find /var/log -mtime +10</code></li>
+<li>查找文件大小是 25k 的文件 <code>find . -size 25k</code></li>
+<li>查找 i 节点是 262422 的文件 <code>find . -inum 262422</code></li>
+<li>逻辑与 <code>-a</code> 逻辑或 <code>-o</code></li>
+<li>对搜索结果在进行操作 <code>-exec/-ok (命令) {} \</code></li>
+</ul>
+</li>
+</ul>
+<p><em>grep</em></p>
+<ul>
+<li>在文件中匹配符合条件的“字符串”</li>
+<li><code>grep [选项] 字符串 文件名</code></li>
+<li>选项：<ul>
+<li>-i 忽略大小写</li>
+<li>-v 排除指定字符串</li>
+</ul>
+</li>
+</ul>
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><p><em>man</em></p>
+<ul>
+<li>获取指定命令的帮助</li>
+<li><code>man 命令</code></li>
+<li>英文：manual（文档）</li>
+<li>级别：<ul>
+<li>0：关机</li>
+<li>1：单用户类似于 win 中的安全模式</li>
+<li>2：不完全多用户，不含 NFS 服务不包含 NFS 的普通字符界面</li>
+<li>3 ：完全多用户普通的字符界面</li>
+<li>4：未分配</li>
+<li>5：图像界面</li>
+<li>6：重启</li>
+</ul>
+</li>
+<li>查看命令拥有哪个级别：man -f(级别) 命令 (相当于) whatis 命令</li>
+<li>查看和命令相关的所有帮助：man -k 命令 （相当于） apropos 命令</li>
+</ul>
+<p><em>-help</em></p>
+<ul>
+<li>获取命令选项帮助</li>
+<li><code>命令 - -help</code></li>
+</ul>
+<p><em>help</em></p>
+<ul>
+<li>获取 shell 内部命令的帮助</li>
+<li><code>help 内部命令</code></li>
+</ul>
+<p><em>info</em></p>
+<ul>
+<li>详细命令帮助（不常用）</li>
+<li><code>info 命令</code><ul>
+<li>回车：进入子帮助页面（带有*号标记）</li>
+<li>u：进入上层页面</li>
+<li>n：进入下一个帮助小节</li>
+<li>p：进入上一个帮助小节</li>
+<li>q：退出</li>
+</ul>
+</li>
+</ul>
+<h3 id="压缩和解压缩命令"><a href="#压缩和解压缩命令" class="headerlink" title="压缩和解压缩命令"></a>压缩和解压缩命令</h3><p><em>.zip</em></p>
+<ul>
+<li>压缩文件： <code>zip 压缩文件名 源文件</code></li>
+<li>压缩目录：<code>zip -r 压缩文件名 源目录</code></li>
+<li>解压缩文件：<code>unzip 压缩文件</code></li>
+</ul>
+<p><em>.gz</em></p>
+<ul>
+<li>压缩后源文件消失：<code>gzip 源文件</code></li>
+<li>压缩后源文件保留：<code>gzip -c 源文件 &gt; 压缩文件</code></li>
+<li>压缩目录下的所有子文件，但不压缩目录：<code>gzip -r 目录</code></li>
+<li>解压：<code>gzip -d 压缩文件 / gunzip 压缩文件</code></li>
+</ul>
+<p><em>.bz2</em></p>
+<ul>
+<li>压缩后不保留源文件：<code>bzip2 源文件</code></li>
+<li>压缩后保留源文件：<code>bzip2 -k 源文件</code></li>
+<li>解压（-k 保留压缩文件）：<code>bzip2 -d 压缩文件 / bunzip2 压缩文件</code></li>
+<li>注：bzip2 不能压缩目录</li>
+</ul>
+<p><em>tar</em></p>
+<ul>
+<li>打包</li>
+<li>tar <code>-cvf 打包文件名 源文件</code></li>
+<li>选项：<ul>
+<li>-c：打包</li>
+<li>-v：显示过程</li>
+<li>-f：指定打包后的文件名</li>
+</ul>
+</li>
+<li>打包之后再压缩</li>
+<li>解打包命令：<code>tar -xvf 打包文件名</code></li>
+<li>选项：<ul>
+<li>-x：解打包</li>
+</ul>
+</li>
+</ul>
+<p><em>.tar.gz（常见）</em></p>
+<ul>
+<li>先打包 再压缩/解压</li>
+<li>压缩：<code>tar -zcvf 压缩包名.tar.gz 源文件</code></li>
+<li>选项：<ul>
+<li>-z：压缩为.tar.gz 格式</li>
+</ul>
+</li>
+<li>解压缩：<code>tar -zxvf 压缩包名.tar.gz</code></li>
+<li>选项：<ul>
+<li>-x：解压缩.tar.gz 格式</li>
+</ul>
+</li>
+<li>指定位置解压：<code>tar -zxvf 压缩包名.tar.gz -C 解压目录</code></li>
+<li>查看压缩包：<code>tar -ztvf 压缩包名.tar.gz</code></li>
+</ul>
+<p><em>.tar.bz2（常见）</em></p>
+<ul>
+<li>先打包 再压缩/解压</li>
+<li>压缩：<code>tar -jcvf 压缩包名.tar.bz2 源文件</code></li>
+<li>选项：<ul>
+<li>-z：压缩为.tar.bz2 格式</li>
+</ul>
+</li>
+<li>解压缩 <code>tar -jxvf 压缩包名.tar.bz2</code></li>
+<li>选项：<ul>
+<li>-x：解压缩.tar.bz2 格式</li>
+</ul>
+</li>
+<li>指定位置解压：<code>tar -jxvf 压缩包名.tar.bz2 -C 解压目录</code></li>
+<li>查看压缩包：<code>tar -ztvf 压缩包名.tar.bz2</code></li>
+</ul>
+<h3 id="关机和重启命令"><a href="#关机和重启命令" class="headerlink" title="关机和重启命令"></a>关机和重启命令</h3><p><em>shutdown</em></p>
+<ul>
+<li>shutdown [ 选项 ] 时间</li>
+<li>选项：<ul>
+<li>-c：取消前一个关机命令</li>
+<li>-h：关机</li>
+<li>-r：重启</li>
+</ul>
+</li>
+<li><p>时间：</p>
+<ul>
+<li>now：立即重启</li>
+<li>00：00 定时重启</li>
+</ul>
+</li>
+<li><p>其他关机命令（不安全）：</p>
+<ul>
+<li><code>halt</code></li>
+<li><code>poweroff</code></li>
+<li><code>init 0</code></li>
+</ul>
+</li>
+<li><p>其他重启命令：</p>
+<ul>
+<li><code>reboot</code></li>
+<li><code>init 6 （不安全）</code></li>
+</ul>
+</li>
+<li><p>退出登录：<code>logout</code></p>
+</li>
+</ul>
+<h3 id="网络通讯命令"><a href="#网络通讯命令" class="headerlink" title="网络通讯命令"></a>网络通讯命令</h3><p><em>ifconfig</em></p>
+<ul>
+<li>显示或设置网络设备</li>
+<li>显示网络设备：<code>ifconfig</code></li>
+<li>启用 eth0 网卡：<code>ifconfig eth0 up</code></li>
+<li>停用 eth0：<code>ifconfig eth0 down</code></li>
+</ul>
+<p><em>ping</em></p>
+<ul>
+<li>测试网络状态</li>
+<li><code>ping 192.168.164.1</code></li>
+</ul>
+<p><em>netstat</em></p>
+<ul>
+<li>查看网络端口</li>
+<li>选项：<ul>
+<li>-t : 指明显示 TCP 端口</li>
+<li>-u : 指明显示 UDP 端口</li>
+<li>-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)</li>
+<li>-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。</li>
+<li>-n : 不进行 DNS 轮询(可以加速操作)</li>
+</ul>
+</li>
+</ul>
+<p><em>hostname</em></p>
+<ul>
+<li>查看当前主机名</li>
+</ul>
+<p><em>uname</em></p>
+<ul>
+<li>显示系统信息</li>
+<li><code>uname -a</code> 显示本机详细信息。 依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型</li>
+</ul>
+<h3 id="挂载命令"><a href="#挂载命令" class="headerlink" title="挂载命令"></a>挂载命令</h3><p><em>mount</em></p>
+<ul>
+<li><code>mount [ -t文件系统 ] [-o 特殊选项] 设备文件名 挂载点</code></li>
+<li>选项：<ul>
+<li>-t 文件系统：加入文件系统类型来指定挂载的类型。可以 ext3、ext4、ISO9660 等文件系统</li>
+<li>-o 特殊选项：可以指定挂载的额外选项<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjo0o9p72cj312f0jkna3.jpg" alt=""></li>
+</ul>
+</li>
+<li><p>查询系统中已经挂载的设备：<code>mount</code></p>
+</li>
+<li><p>依据配置文件/etc/fstab 的内容 自动挂载：<code>mount -a</code></p>
+</li>
+<li>注：LInux 挂载点 == Windows 分配盘符</li>
+<li>建立挂载点：<code>mkdir /mnt/cdrom/</code></li>
+<li><p>挂载光盘</p>
+<ul>
+<li><p><code>mount -t iso9660 /dev/cdrom /mnt/cdrom/</code></p>
+</li>
+<li><p><code>mount /dev/sr0 /mnt/cdrom</code></p>
+</li>
+</ul>
+</li>
+<li><p>卸载命令：<code>umount 设备文件名或挂载点</code></p>
+</li>
+<li>注：先退出光盘的目录；一定要先卸载才能拿出光盘</li>
+<li>挂载 U 盘：<code>mount -t vfat /dev/sdb1 /mnt/usb</code></li>
+<li>查看 U 盘设备文件名：<code>fdisk -l</code></li>
+<li>注：LInux 默认不支持 NTFS 文件系统</li>
+</ul>
+<h3 id="用户登录查看"><a href="#用户登录查看" class="headerlink" title="用户登录查看"></a>用户登录查看</h3><p><em>w 用户名</em></p>
+<ul>
+<li>查看登录用户信息</li>
+</ul>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fjo0w9j87sj30vc0cnaju.jpg" alt=""></p>
+<p><em>who 用户名</em></p>
+<ul>
+<li>查看登录用户信息</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjo0wy440zj30fp06djth.jpg" alt=""></p>
+<p><em>last</em></p>
+<ul>
+<li>查看当前登录和过去登录的用户信息</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjo0xqu8jhj30o60agdk9.jpg" alt=""></p>
+<p><em>lastlog</em></p>
+<ul>
+<li>查看所有用户的最后一次登录时间</li>
+</ul>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjo0yw43bej30qc08tae6.jpg" alt=""></p>
+<h3 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h3><p><em>history</em></p>
+<ul>
+<li><code>history [选项] [历史命令保存文件]</code></li>
+<li>选项：<ul>
+<li>-c：清空历史命令</li>
+<li>-w：把缓存中的历史命令写入历史命令保存文件 <code>~/.bash_history</code></li>
+</ul>
+</li>
+<li>历史命令的调用：</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjo0zpn0qgj30x107gdk5.jpg" alt=""></p>
+<h3 id="计算机状态"><a href="#计算机状态" class="headerlink" title="计算机状态"></a>计算机状态</h3><p><em>date</em></p>
+<ul>
+<li>查看当前时间</li>
+<li><code>date</code></li>
+<li>设置时间：<code>date -s &quot;2017-06-28 12:00:00&quot;</code></li>
+</ul>
+<p><em>clear</em></p>
+<ul>
+<li>清屏</li>
+</ul>
+<p><em>df</em></p>
+<ul>
+<li>查看磁盘信息</li>
+<li><code>df -b,-k,-m,-g</code> 按照 byte,kb,mb,g 格式显示磁盘信息</li>
+<li><code>df -h</code> 友好的格式显示磁盘信息</li>
+</ul>
+<p><em>ps</em></p>
+<ul>
+<li>查看正在运行进程的状态</li>
+<li><code>ps</code></li>
+<li><code>ps –ef</code> 查看所有进程</li>
+<li><code>ps –ef | grep ssh</code> 查找某一进程</li>
+</ul>
+<p><em>kill</em></p>
+<ul>
+<li>杀掉进程</li>
+<li><code>kill pid</code> : 杀掉进程</li>
+<li><code>kill 2868</code>: 杀掉 2868 编号的进程</li>
+<li><code>kill -9 pid</code>: 强制杀掉进程</li>
+<li><code>kill -9 2868</code>: 强制杀死进程 2868</li>
+</ul>
+<h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><h3 id="操作模式："><a href="#操作模式：" class="headerlink" title="操作模式："></a>操作模式：</h3><ul>
+<li>输入模式：“i” 切换</li>
+<li>命令模式：默认的模式；用于输入命令；输入命令，不能查看，立即执行</li>
+<li>底行模式：“esc” 切换 ；“:wq” 保存退出；输入命令，底行查看，回车执行</li>
+</ul>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><p><em>vim “文件名”</em></p>
+<ul>
+<li>创建并打开文件</li>
+</ul>
+<p><em>vim + “文件名”</em></p>
+<ul>
+<li>打开文件后 光标定位到最后一行</li>
+</ul>
+<p><em>vim +3 “文件名”</em></p>
+<ul>
+<li>打开文件后 光标定位到第三行</li>
+</ul>
+<p><em>vim +/imooc “文件名”</em></p>
+<ul>
+<li>打开文件 光标定位到 imooc 第一次出现的行</li>
+<li>按 “n” 切换下一个 imooc 出现的地方</li>
+</ul>
+<p><em>vim “文件名 1” “文件名 2” “文件名 3”</em></p>
+<ul>
+<li>创建多个文件 并打开第一个文件</li>
+<li>在底行模式输入 “:n” 切换下一个文件</li>
+<li>底行模式 “:N” 或 “:prev” 切换上一个文件</li>
+</ul>
+<h3 id="底行模式"><a href="#底行模式" class="headerlink" title="底行模式"></a>底行模式</h3><p><code>:wq</code> 保存并退出</p>
+<p><code>:w</code>保存</p>
+<p><code>:q</code>退出文件</p>
+<p><code>:!</code> 强制执行</p>
+<p><code>:!q</code> 不保存 并退出</p>
+<p><code>:ls</code> 列出打开的所有文件</p>
+<p><code>:n</code>切换后一个文件</p>
+<p><code>:N</code> 切换前一个文件</p>
+<p><code>:3</code> 光标定位到第三行</p>
+<p><code>/xxx</code> 从光标定位开始向后搜索“xxx”第一次出现的行</p>
+<p><code>?xxx</code> 从光标定位开始向前搜索“xxx” 第一次出现的行</p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><code>h</code>&emsp;&emsp;&emsp;&emsp;光标左移</p>
+<p><code>j</code>&emsp;&emsp;&emsp;&emsp;光标下移</p>
+<p><code>k</code>&emsp;&emsp;&emsp;&emsp;光标上移</p>
+<p><code>l</code>&emsp;&emsp;&emsp;&emsp;光标右移</p>
+<p><code>“Ctrl” + f</code>&emsp;&emsp;&emsp;向下翻页</p>
+<p><code>“Ctrl” + b</code>&emsp;&emsp;&emsp;向上翻页</p>
+<p><code>“Ctrl” + d</code>&emsp;&emsp;&emsp;向下翻半页</p>
+<p><code>“Ctrl” + u</code>&emsp;&emsp;&emsp;向下翻半页</p>
+<p><code>dd</code>&emsp;&emsp;&emsp;&emsp;删除光标所在行</p>
+<p><code>o</code>&emsp;&emsp;&emsp;&emsp;在光标所在行的下方插入一行并切换到输入模式</p>
+<p><code>yy</code>&emsp;&emsp;&emsp;&emsp;复制光标所在行</p>
+<p><code>p</code>&emsp;&emsp;&emsp;&emsp;在光标所在行的下方粘贴</p>
+<p><code>P</code>&emsp;&emsp;&emsp;&emsp;在光标所在行的上方粘贴</p>
+<h3 id="VIM-指令图"><a href="#VIM-指令图" class="headerlink" title="VIM 指令图"></a>VIM 指令图</h3><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjongb0e6xj30sg0k3kag.jpg" alt=""></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-系统介绍"><span class="toc-number">1.</span> <span class="toc-text">Linux 系统介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本知识"><span class="toc-number">1.1.</span> <span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与-Windows-的区别"><span class="toc-number">1.2.</span> <span class="toc-text">与 Windows 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分区"><span class="toc-number">1.3.</span> <span class="toc-text">分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#格式化"><span class="toc-number">1.4.</span> <span class="toc-text">格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件系统"><span class="toc-number">1.5.</span> <span class="toc-text">文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-number">1.6.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">1.7.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件权限"><span class="toc-number">1.8.</span> <span class="toc-text">文件权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型"><span class="toc-number">1.9.</span> <span class="toc-text">文件类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">2.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件处理命令"><span class="toc-number">2.1.</span> <span class="toc-text">文件处理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接命令"><span class="toc-number">2.2.</span> <span class="toc-text">链接命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件搜索命令"><span class="toc-number">2.3.</span> <span class="toc-text">文件搜索命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#帮助命令"><span class="toc-number">2.4.</span> <span class="toc-text">帮助命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩和解压缩命令"><span class="toc-number">2.5.</span> <span class="toc-text">压缩和解压缩命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关机和重启命令"><span class="toc-number">2.6.</span> <span class="toc-text">关机和重启命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络通讯命令"><span class="toc-number">2.7.</span> <span class="toc-text">网络通讯命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挂载命令"><span class="toc-number">2.8.</span> <span class="toc-text">挂载命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户登录查看"><span class="toc-number">2.9.</span> <span class="toc-text">用户登录查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#历史命令"><span class="toc-number">2.10.</span> <span class="toc-text">历史命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机状态"><span class="toc-number">2.11.</span> <span class="toc-text">计算机状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim"><span class="toc-number">3.</span> <span class="toc-text">Vim</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作模式："><span class="toc-number">3.1.</span> <span class="toc-text">操作模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文件"><span class="toc-number">3.2.</span> <span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#底行模式"><span class="toc-number">3.3.</span> <span class="toc-text">底行模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令模式"><span class="toc-number">3.4.</span> <span class="toc-text">命令模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VIM-指令图"><span class="toc-number">3.5.</span> <span class="toc-text">VIM 指令图</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2017/09/18/Shell常用命令/";
+  var disqus_url = "https://isliangj.github.io/2017/09/18/Shell常用命令/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

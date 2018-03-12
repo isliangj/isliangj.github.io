@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>Vue 开发的 WebAPP —— eat-what | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>Vue 开发的 WebAPP —— eat-what</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年11月18日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#项目总结" class='tag'>项目总结</a>
+
+
+            
+          </div>
+          <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>本项目能解决，你人生的三件大事 —— 早上吃什么 中午吃什么 晚上吃什么，让有选择困难症的你不再纠结。</p>
+<h3 id="GitHub-地址"><a href="#GitHub-地址" class="headerlink" title="GitHub 地址"></a>GitHub 地址</h3><p><a href="https://github.com/suclub/eat-what/tree/develop" target="_blank" rel="external">eat-what</a></p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p><a href="http://www.isliangj.cn/#/select" target="_blank" rel="external">在线 Demo</a></p>
+<blockquote>
+<p>建议使用手机浏览 或 将 PC 端浏览器切换为手机模式</p>
+</blockquote>
+<h3 id="演示效果"><a href="#演示效果" class="headerlink" title="演示效果"></a>演示效果</h3><blockquote>
+<p>gif 格式会有失帧，具体效果参考实际程序</p>
+</blockquote>
+<ol>
+<li>主页面</li>
+</ol>
+<p>通过类似老虎机滚动的形式对添加的食物进行随机选择</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1flna4kelo5g30ci0m4kjl.gif" alt="主页面"></p>
+<ol>
+<li>添加美食</li>
+</ol>
+<p>会在当前  分类项中添加美食</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1flna8gh5hrg30ci0m4u0x.gif" alt="添加美食"></p>
+<ol>
+<li>切换分页</li>
+</ol>
+<p>用滑出主菜单的形式切换分页，共有两个页面，‘ 选择 ’ 和 ‘ 列表 ’</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1flnabvdvafg30ci0m41ep.gif" alt="切换分页"></p>
+<ol>
+<li>编辑美食</li>
+</ol>
+<p> 在 ‘ 列表 ’ 页面中通过左滑的形式，对美食进行修改和删除的操作</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1flnae9w93qg30ci0m4kjl.gif" alt="编辑美食"></p>
+<h2 id="项目技术"><a href="#项目技术" class="headerlink" title="项目技术"></a>项目技术</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fp9upfkflxj30au0x6mzs.jpg" alt="目录结构"></p>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul>
+<li><p>Vue</p>
+</li>
+<li><p>Mint UI</p>
+</li>
+<li><p>Sass</p>
+</li>
+<li><p>Vuex</p>
+</li>
+<li><p>vue-router</p>
+</li>
+<li><p>localStorage</p>
+</li>
+</ul>
+<h3 id="项目工具"><a href="#项目工具" class="headerlink" title=" 项目工具"></a> 项目工具</h3><ul>
+<li><p>Webpack</p>
+</li>
+<li><p>git-flow</p>
+</li>
+<li><p>Eslint</p>
+</li>
+</ul>
+<h3 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h3><p>本项目主要是对用户添加的选项进行随机选择，所以项目主要分为两个部分，一个是友好直观的对数据进行选择，另一个是合理的对添加的数据进行管理。</p>
+<p>所以项目需要解决的问题是：</p>
+<ul>
+<li>选择页面连续顺畅的滚动</li>
+<li>数据保存 退出浏览器不清除数据</li>
+<li>两部分的数据能方便传输</li>
+<li>组件样式符合主流审美</li>
+<li>……</li>
+</ul>
+<h3 id="关键部分"><a href="#关键部分" class="headerlink" title="关键部分"></a>关键部分</h3><h4 id="循环滚动"><a href="#循环滚动" class="headerlink" title="循环滚动"></a>循环滚动</h4><p>与一般 ‘ 老虎机抽奖 ’ 的图片滚动不同， 这里需要滚动的列表，而且是需要动态添加的， 同时需要做到无缝循环滚动，所以我们使用定时器， 每隔一定时间改变列表的 ‘top’， 在用 ‘transition’ 添加动画效果，为了做到循环滚动， 在滚动的间隙，将第一项删除，并 push 到最后一项。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 每隔100ms top向上移动一个单位，达到向上滚动的效果</span></div><div class="line">setInterval(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">this</span>.activeIndex += <span class="number">1</span></div><div class="line">&#125;, <span class="number">100</span>)</div><div class="line"><span class="comment">// 将第一项push到数组的最后，然后再删除第一项</span></div><div class="line">setTimeout(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</div><div class="line">  setInterval(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.rollerList.push(<span class="keyword">this</span>.rollerList[<span class="number">0</span>])</div><div class="line">    <span class="keyword">this</span>.rollerList.splice(<span class="number">0</span>, <span class="number">1</span>)</div><div class="line">    <span class="keyword">this</span>.activeIndex = <span class="number">0</span></div><div class="line">  &#125;, <span class="number">100</span>)</div><div class="line">&#125;, <span class="number">50</span>)</div></pre></td></tr></table></figure>
+<h4 id="本地存储-localStorage"><a href="#本地存储-localStorage" class="headerlink" title="本地存储 localStorage"></a>本地存储 localStorage</h4><p>我们采用了 js 原生的 localStorage，在 Vuex 中，当数据发生改变就将新数据储存一遍，当项目刚启动时， 先调用本地的数据，只要不清空手机浏览器的缓存，数据一直都在，方便下次使用。</p>
+<p>另外 localStorage 只支持字符串的形式，所以要通过 JSON.stringify 和 JSON.parse 对数据进行转化</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 储存数据</span></div><div class="line"><span class="built_in">window</span>.localStorage.setItem(<span class="string">'dataList'</span>,<span class="built_in">JSON</span>.stringify(state.dataList))</div><div class="line"><span class="comment">// 读取数据</span></div><div class="line">state.dataList = <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'dataList'</span>))</div></pre></td></tr></table></figure>
+<h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><p>为方便页面之间的数据的通信，我们使用了 Vuex 进行数据通信</p>
+<p>具体使用参考 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">Vuex 文档</a></p>
+<h4 id="移动端-UI-组件"><a href="#移动端-UI-组件" class="headerlink" title="移动端 UI 组件 "></a>移动端 UI 组件 </h4><p>本项目的 UI 组件使用的是 Mint UI，该组件是 ‘ 饿了么 ’ 开源的移动端组件库，UI 风格和本项目十分吻合，所以使用该组件进行开发</p>
+<p>具体使用参考  <a href="http://mint-ui.github.io/#!/zh-cn" target="_blank" rel="external">Mint UI 官网</a></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目简介"><span class="toc-number">1.</span> <span class="toc-text">项目简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GitHub-地址"><span class="toc-number">1.1.</span> <span class="toc-text">GitHub 地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-number">1.2.</span> <span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#演示效果"><span class="toc-number">1.3.</span> <span class="toc-text">演示效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目技术"><span class="toc-number">2.</span> <span class="toc-text">项目技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">2.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术栈"><span class="toc-number">2.2.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目工具"><span class="toc-number">2.3.</span> <span class="toc-text"> 项目工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目分析"><span class="toc-number">2.4.</span> <span class="toc-text">项目分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键部分"><span class="toc-number">2.5.</span> <span class="toc-text">关键部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#循环滚动"><span class="toc-number">2.5.1.</span> <span class="toc-text">循环滚动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地存储-localStorage"><span class="toc-number">2.5.2.</span> <span class="toc-text">本地存储 localStorage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vuex"><span class="toc-number">2.5.3.</span> <span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移动端-UI-组件"><span class="toc-number">2.5.4.</span> <span class="toc-text">移动端 UI 组件 </span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2017/11/18/Vue开发的webapp——eat-what/";
+  var disqus_url = "https://isliangj.github.io/2017/11/18/Vue开发的webapp——eat-what/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>
