@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>Vue 开发移动端音乐 WebApp | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>Vue 开发移动端音乐 WebApp</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年03月13日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#本项目是跟随慕课网高级课程进行开发，旨在了解实际的开发的要求和规范" class='tag'>本项目是跟随慕课网高级课程进行开发，旨在了解实际的开发的要求和规范</a>
+
+
+            
+          </div>
+          <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>该项目是一款移动端音乐播放器，基于 Vue 进行开发，项目的功能和样式尽可能还原原生的 App，音乐的数据从  qq 音乐线上抓取</p>
+<h3 id="GitHub-地址"><a href="#GitHub-地址" class="headerlink" title="GitHub 地址"></a>GitHub 地址</h3><p><a href="https://github.com/isliangj/Vue-music" target="_blank" rel="external">Vue-music</a></p>
+<h3 id="项目演示"><a href="#项目演示" class="headerlink" title="项目演示"></a>项目演示</h3><ol>
+<li><p>播放器主页面<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fpaxzm9gquj30kw10y1kx.jpg" alt="播放器主页面"></p>
+</li>
+<li><p>推荐页面 和 歌手页面<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fpay2wrxlwj313k10zn4h.jpg" alt="推荐 歌手"></p>
+</li>
+<li><p>排行页面 和 搜索页面<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fpay47ps9ej313t10wq86.jpg" alt=""></p>
+</li>
+</ol>
+<h2 id="项目开发"><a href="#项目开发" class="headerlink" title="项目开发"></a>项目开发</h2><h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul>
+<li><p>Vue</p>
+</li>
+<li><p>stylus</p>
+</li>
+<li><p>Vuex</p>
+</li>
+<li><p>axios</p>
+</li>
+</ul>
+<h3 id="组件库"><a href="#组件库" class="headerlink" title=" 组件库"></a> 组件库</h3><ul>
+<li><p>vue-router</p>
+</li>
+<li><p>better-scroll</p>
+</li>
+<li><p>vue-lazyload</p>
+</li>
+<li><p>jsonp</p>
+</li>
+<li><p>create-keyframe-animation</p>
+</li>
+<li><p>js-base64</p>
+</li>
+<li><p>lyric-parser</p>
+</li>
+<li><p>good-storage</p>
+</li>
+<li><p>fastclick</p>
+</li>
+</ul>
+<h3 id="项目工具"><a href="#项目工具" class="headerlink" title="项目工具"></a>项目工具</h3><ul>
+<li><p>webpack</p>
+</li>
+<li><p>eslint</p>
+</li>
+<li><p>git</p>
+</li>
+</ul>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>该项目类比于常见的移动端音乐播放器，界面功能都要近似原生的 APP ，所以需要完成的功能有：</p>
+<ul>
+<li><p>数据跨域请求</p>
+</li>
+<li><p>数据全局共享</p>
+</li>
+<li><p>页面流畅的滚动</p>
+</li>
+<li><p>播放器的实现</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+<h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><p>我们使用 jsonp 进行跨域请求</p>
+<p>使用在 <code>package.json</code> 中安装 jsonp 后， 对 jsonp 进行抽象封装。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> originJSONP <span class="keyword">from</span> <span class="string">'jsonp'</span></div><div class="line"></div><div class="line"><span class="comment">// url是纯净的地址 data是其他url的其他选项 option为库里的option</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">jsonp</span>(<span class="params">url, data, option</span>) </span>&#123;</div><div class="line">  url += (url.indexOf(<span class="string">'?'</span>) &lt; <span class="number">0</span> ? <span class="string">'?'</span> : <span class="string">'&amp;'</span>) + param(data)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    originJSONP(url, option, (err, data) =&gt; &#123;</div><div class="line">      <span class="keyword">if</span> (!err) &#123;</div><div class="line">        resolve(data)</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        reject(err)</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 对data对象拼到url中</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">param</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> url = <span class="string">''</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> data) &#123;</div><div class="line">    <span class="keyword">let</span> value = data[k] !== <span class="literal">undefined</span> ? data[k] : <span class="string">''</span></div><div class="line">    url += <span class="string">`&amp;<span class="subst">$&#123;k&#125;</span>=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(value)&#125;</span>`</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> url ? url.substring(<span class="number">1</span>) : <span class="string">''</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再分别请求每个数据，例如抓取 recommend 的数据</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> jsonp <span class="keyword">from</span> <span class="string">'common/js/jsonp'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getRecommend</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'</span></div><div class="line"></div><div class="line">  <span class="keyword">const</span> data = <span class="built_in">Object</span>.assign(&#123;&#125;, commonParams, &#123;</div><div class="line">    platform: <span class="string">'h5'</span>,</div><div class="line">    uni: <span class="number">0</span>,</div><div class="line">    needNewCode: <span class="number">1</span></div><div class="line">  &#125;)</div><div class="line">  <span class="keyword">return</span> jsonp(url, data, options)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Vuex-规范使用"><a href="#Vuex-规范使用" class="headerlink" title="Vuex 规范使用"></a>Vuex 规范使用</h4><p>Vuex 的不做过多的介绍，具体可以参考 <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">Vuex 文档</a></p>
+<p>这里重点讲一下 Vuex 的规范使用</p>
+<ol>
+<li><code>store</code> 目录的定义</li>
+</ol>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fpb6wasbtpj30b408mjs4.jpg" alt="store"></p>
+<ol>
+<li><p><code>state.js</code> 文件定义一些底层的参数</p>
+</li>
+<li><p><code>mutation-types.js</code> 文件对参数进行对应</p>
+</li>
+<li><p><code>mutations.js</code> 文件可以修改参数</p>
+</li>
+<li><p><code>getters.js</code> 文件对数据进行映射，类似于计算属性</p>
+</li>
+<li><p><code>actions.js</code> 文件需要修改多个参数时使用，进行函数封装</p>
+</li>
+<li><p><code>index.js</code> 文件引入以上所有文件</p>
+</li>
+</ol>
+<h4 id="better-scroll-插件"><a href="#better-scroll-插件" class="headerlink" title="better-scroll 插件"></a>better-scroll 插件</h4><p>为了让页面能够流畅的滚动 ，该项目使用了 better-scroll 插件</p>
+<p>具体的使用可是参考 <a href="https://github.com/ustbhuangyi/better-scroll" target="_blank" rel="external">better-scroll 文档</a></p>
+<h4 id="博客持续更新中……"><a href="#博客持续更新中……" class="headerlink" title="博客持续更新中……"></a>博客持续更新中……</h4>
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目简介"><span class="toc-number">1.</span> <span class="toc-text">项目简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GitHub-地址"><span class="toc-number">1.1.</span> <span class="toc-text">GitHub 地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目演示"><span class="toc-number">1.2.</span> <span class="toc-text">项目演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目开发"><span class="toc-number">2.</span> <span class="toc-text">项目开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#技术栈"><span class="toc-number">2.1.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件库"><span class="toc-number">2.2.</span> <span class="toc-text"> 组件库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目工具"><span class="toc-number">2.3.</span> <span class="toc-text">项目工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需求分析"><span class="toc-number">2.4.</span> <span class="toc-text">需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术实现"><span class="toc-number">2.5.</span> <span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jsonp"><span class="toc-number">2.5.1.</span> <span class="toc-text">jsonp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vuex-规范使用"><span class="toc-number">2.5.2.</span> <span class="toc-text">Vuex 规范使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#better-scroll-插件"><span class="toc-number">2.5.3.</span> <span class="toc-text">better-scroll 插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#博客持续更新中……"><span class="toc-number">2.5.4.</span> <span class="toc-text">博客持续更新中……</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2018/03/13/Vue 开发移动端音乐 WebApp/";
+  var disqus_url = "https://isliangj.github.io/2018/03/13/Vue 开发移动端音乐 WebApp/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>
