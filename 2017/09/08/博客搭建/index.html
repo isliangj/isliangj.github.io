@@ -106,7 +106,7 @@
 <h3 id="发布到-GitHub-Pages"><a href="#发布到-GitHub-Pages" class="headerlink" title="发布到 GitHub Pages"></a>发布到 GitHub Pages</h3><p>发布之前下载安装 <em>hexo-deployer-git</em> ，在项目文件中输入下面命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 <p>发布命令，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo clean  //清除缓存</div><div class="line"></div><div class="line">$ hexo g  //生成本地发布文件夹</div><div class="line"></div><div class="line">$ hexo d  //发布到github pages</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo c 或 hexo clean  //清除缓存</div><div class="line"></div><div class="line">$ hexo g 或 hexo generate  //生成本地发布文件夹</div><div class="line"></div><div class="line">$ hexo d 或 hexo deploy  //发布到github pages</div></pre></td></tr></table></figure>
 <p>然后就可以在博客地址中查看</p>
 <p><em><a href="https://yourusername.github.io" target="_blank" rel="external">https://yourusername.github.io</a></em></p>
 <h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>在 Hexo 官网 <em><a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a></em> 中寻找自己的喜欢的主题</p>
@@ -115,8 +115,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> <span class="string">"主题GitHub地址"</span></div></pre></td></tr></table></figure>
 <p>把 __config.yml_ 文件中的<em>themes</em>选项设置为：主题文件名</p>
 <blockquote>
-<p>这里推荐一下本人比较喜欢也是本博客使用的主题</p>
-<p><a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank" rel="external">hexo-theme-Aath</a></p>
+<p>这里推荐一下本人比较喜欢也是本博客使用的主题 <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank" rel="external">hexo-theme-Aath</a></p>
 </blockquote>
 <h3 id="图片的加载"><a href="#图片的加载" class="headerlink" title="图片的加载"></a>图片的加载</h3><h4 id="保存在-同一服务器"><a href="#保存在-同一服务器" class="headerlink" title="保存在  同一服务器"></a>保存在  同一服务器</h4><p>在 <em>source</em> 文件夹下创建文件夹 <em>“images”</em></p>
 <p>在文章中使用相对路径即可，例如：</p>
