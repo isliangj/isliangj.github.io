@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>CSS动画：animation、transition、transform、translate | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>CSS动画：animation、transition、transform、translate</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年06月22日</time>
+            
+            
+              | 
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+  <a href="/tags/#CSS 基础总结" class='tag'>CSS 基础总结</a>
+
+
+            
+          </div>
+          <h2 id="transition（过渡）"><a href="#transition（过渡）" class="headerlink" title="transition（过渡）"></a>transition（过渡）</h2><ul>
+<li><p><strong>定义</strong>：元素从这个属性(color)的某个值(red)过渡到这个属性(color)的另外一个值(green)，这是一个状态的转变，需要一种条件来触发这种转变，比如我们平时用到的:hover、:focus、:checked、媒体查询或者 JavaScript。</p>
+</li>
+<li><p><strong>语法</strong>：<code>transition: property duration timing-function delay;</code></p>
+<ul>
+<li><strong>transition-property</strong>：规定设置过渡效果的 CSS 属性的名称，只有指定的属性才会在过渡中发生动画，其它属性仍如通常那样瞬间变化。<ul>
+<li>取值有：none(没有属性改变)；all（所有属性改变）这个也是其默认值；indent（元素属性名），通常定义为 transform</li>
+</ul>
+</li>
+<li><strong>transition-duration</strong>：规定完成过渡效果需要多少秒或毫秒</li>
+<li><strong>transition-timing-function</strong>：规定速度效果的速度曲线<ul>
+<li>取值有：linear(匀速)、ease（逐渐慢下来）、ease-in（加速）、ease-out（减速）、ease-in-out（先加速后减速）<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsk418fkedj30dw04rdgw.jpg" alt="transition-timing-function"></li>
+</ul>
+</li>
+<li><strong>transition-delay</strong>：指定延迟，即属性开始变化时与过渡开始发生时之间的时</li>
+</ul>
+</li>
+<li><p><strong>不足</strong>：</p>
+<ul>
+<li>需要事件触发，所以没法在网页加载时自动发生</li>
+<li>是一次性的，不能重复发生，除非一再触发</li>
+<li>只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态</li>
+<li>一条 transition 规则，只能定义一个属性的变化，不能涉及多个属性</li>
+</ul>
+</li>
+</ul>
+<p>- 例子：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">  #box &#123;</span></div><div class="line"><span class="undefined">    height: 100px;</span></div><div class="line"><span class="undefined">    width: 100px;</span></div><div class="line"><span class="undefined">    background: green;</span></div><div class="line"><span class="undefined">    transition: transform 1s ease-in 1s;</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">  #box:hover &#123;</span></div><div class="line"><span class="undefined">    transform: rotate(180deg) scale(.5, .5);</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fsk4a7br5ig308003amyj.gif" alt="transition"></p>
+<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><ul>
+<li><p><strong>定义</strong>：在官方的介绍上介绍这个属性是 transition 属性的扩展，弥补了 transition 的很多不足，可以理解为 animation 是由多个 transition 的效果叠加，并且可操作性更强，能够做出复杂酷炫的效果</p>
+</li>
+<li><p><strong>语法</strong>：<code>animation: name duration timing-function delay iteration-count direction play-state fill-mode;</code></p>
+<ul>
+<li>animation-name：用来调用@keyframes 定义好的动画，与@keyframes 定义的动画名称一致</li>
+<li>animation-duration：指定元素播放动画所持续的时间</li>
+<li>animation-timing-function：规定速度效果的速度曲线，是针对每一个小动画所在时间范围的变换速率（transition 的一致）</li>
+<li>animation-delay：定义在浏览器开始执行动画之前等待的时间，在整个 animation 执行之前等待的时间</li>
+<li>animation-iteration-count：定义动画的播放次数<ul>
+<li>取值：具体次数、infinite（无限次）</li>
+</ul>
+</li>
+<li>animation-direction：设置动画播放方向<ul>
+<li>取值：normal(按时间轴顺序),alternate(轮流，即来回往复进行)</li>
+</ul>
+</li>
+<li>animation-play-state：控制元素动画的播放状态，通过此来控制动画的暂停和继续<ul>
+<li>取值：running(继续)，paused(暂停)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transition（过渡）"><span class="toc-number">1.</span> <span class="toc-text">transition（过渡）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation"><span class="toc-number">2.</span> <span class="toc-text">animation</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2018/06/22/CSS动画：animation、transition、transform、translate/";
+  var disqus_url = "https://isliangj.github.io/2018/06/22/CSS动画：animation、transition、transform、translate/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy;
+      2018 | Powered by
+        <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by
+      <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1273330571'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273330571%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/lib/in-view.min.js"></script>
+    <script src="/lib/lodash.min.js"></script>
+      <script>
+        var isDown = true
+        var oldY = 0
+        inView.offset(50)
+
+        document.body.addEventListener('touchstart', function () { });
+
+        window.addEventListener('scroll', _.throttle(e => {
+          var currentY = window.scrollY
+          if ((oldY - currentY) < 0) {
+            isDown = true
+          } else {
+            isDown = false
+          }
+          oldY = currentY
+        }, 250))
+
+        $("article img").each(function () {
+          var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+          $(this).wrapAll(strA);
+        });
+
+        $('.toc-link').each(function () {
+          var href = $(this).attr("href");
+
+          inView(href).on('exit', () => {
+            if (isDown) {
+              handleActive(href)
+            }
+          })
+
+          inView(href).on('enter', () => {
+            if (!isDown) {
+              handleActive(href)
+            }
+          })
+
+          this.onclick = function (e) {
+            var pos = $(href).offset().top - 10;
+            $("html,body").animate({ scrollTop: pos }, 300);
+            setTimeout(() => {
+              handleActive(href)
+            }, 350)
+            return false
+          }
+        })
+
+        function handleActive(href) {
+          document.querySelectorAll('.toc-link').forEach(elm => {
+            elm.classList.remove('active')
+          })
+          document.querySelector(".toc [href='" + href + "']").classList.add('active')
+        }
+      </script>
+      <script src="/lib/jquery.fancybox.min.js"></script>
+        
+
+</body>
+</html>

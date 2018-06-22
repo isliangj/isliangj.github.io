@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>flex布局 | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>flex布局</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年10月18日</time>
+            
+            
+              | 
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+  <a href="/tags/#CSS 基础总结" class='tag'>CSS 基础总结</a>
+
+
+            
+          </div>
+          <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsivcjfqusj30fn099q2x.jpg" alt="flex container"></p>
+<p>flex 的核心的概念就是 <strong>容器</strong> 和 <strong>轴</strong> 。容器包括外层的 <strong>父容器（flex container）</strong> 和内层的 <strong>子容器（flex item）</strong>，轴包括 <strong>主轴（main axis）</strong> 和 <strong>交叉轴（cross axis）</strong>。</p>
+<h2 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h2><h3 id="父容器"><a href="#父容器" class="headerlink" title="父容器"></a>父容器</h3><h4 id="justify-content（常用）"><a href="#justify-content（常用）" class="headerlink" title="justify-content（常用）"></a>justify-content（常用）</h4><ul>
+<li>用于定义如何沿着主轴方向排列子容器</li>
+<li><p>选项：</p>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fsiw900nizj30hp0l70sn.jpg" alt="justify-content"></p>
+</li>
+</ul>
+<h4 id="align-items（常用）"><a href="#align-items（常用）" class="headerlink" title="align-items（常用）"></a>align-items（常用）</h4><ul>
+<li>用于定义如何沿着交叉轴方向分配子容器的间距</li>
+<li><p>选项</p>
+<ul>
+<li>stretch（默认值）：如果项目未设置高度或设为 auto，将占满整个容器的高度</li>
+<li>flex-start：交叉轴的起点对齐</li>
+<li>flex-end：交叉轴的终点对齐</li>
+<li>center：交叉轴的中点对齐</li>
+<li>baseline: 项目的第一行文字的基线对齐</li>
+</ul>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsiwlv3eukj30h50lu3yg.jpg" alt="align-items"></p>
+</li>
+</ul>
+<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><ul>
+<li>决定主轴的方向（即项目的排列方向）</li>
+<li><p>选项</p>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+</ul>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsiwx31dbgj30m405na9z.jpg" alt="flex-direction"></p>
+</li>
+</ul>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><ul>
+<li>决定子容器是否换行排列，不但可以顺序换行而且支持逆序换行</li>
+<li><p>选项</p>
+<ul>
+<li>nowrap（默认）：不换行<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fsix3jqdwoj30jg041aam.jpg" alt="不换行"></li>
+<li>wrap：换行，第一行在上方<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsix3r61whj30jg04x3yv.jpg" alt="换行"></li>
+<li>wrap-reverse：换行，第一行在下方<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsix40ijs8j30jg04xmxf.jpg" alt="换行"></li>
+</ul>
+</li>
+</ul>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><ul>
+<li>子容器沿着哪个方向流动及流动到终点是否允许换行</li>
+<li>flex-flow 是一个复合属性，相当于 flex-direction 与 flex-wrap 的组合</li>
+<li>选项<ul>
+<li>row、column 等，可单独设置主轴方向</li>
+<li>wrap、nowrap 等，可单独设置换行方式</li>
+<li>row nowrap、column wrap 等，也可两者同时设置</li>
+</ul>
+</li>
+</ul>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><ul>
+<li>当子容器多行排列时，设置行与行之间的对齐方式</li>
+<li>如果项目只有一根轴线，该属性不起作用</li>
+<li><p>选项</p>
+<ul>
+<li>flex-start：起始端对齐</li>
+<li>flex-end：末尾段对齐</li>
+<li>center：居中对齐</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍</li>
+<li>stretch（默认值）：拉伸对齐，轴线占满整个交叉轴<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fsixf34pt9j30h80lu0so.jpg" alt="align-content"></li>
+</ul>
+</li>
+</ul>
+<h3 id="子容器"><a href="#子容器" class="headerlink" title="子容器"></a>子容器</h3><h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4><ul>
+<li>子容器弹性伸展的比例</li>
+<li>如果所有项目的 flex-grow 属性都为 1，则它们将等分剩余空间<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsjswk2ytgj30ma05v3yf.jpg" alt="flex-grow"></li>
+</ul>
+<h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h4><ul>
+<li>子容器弹性收缩的比例</li>
+</ul>
+<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><ul>
+<li>定义了在分配多余空间之前，项目占据的主轴空间，主轴为横向时表宽度，主轴为纵向时表高度</li>
+</ul>
+<h4 id="flex（常用）"><a href="#flex（常用）" class="headerlink" title="flex（常用）"></a>flex（常用）</h4><ul>
+<li>flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 <strong>0 1 auto</strong>。后两个属性可选。</li>
+<li>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)</li>
+<li>用 flex: 1，缩写 flex-grow: 1;</li>
+</ul>
+<h4 id="align-self（常用）"><a href="#align-self（常用）" class="headerlink" title="align-self（常用）"></a>align-self（常用）</h4><ul>
+<li>每个子容器也可以单独定义沿交叉轴排列的方式，此属性的可选值与父容器 align-items 属性完全一致，如果两者同时设置则以子容器的 align-self 属性为准</li>
+<li>选项<ul>
+<li>stretch（默认值）：如果项目未设置高度或设为 auto，将占满整个容器的高度</li>
+<li>flex-start：交叉轴的起点对齐</li>
+<li>flex-end：交叉轴的终点对齐</li>
+<li>center：交叉轴的中点对齐</li>
+<li>baseline: 项目的第一行文字的基线对齐<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsjt7ta1uhj30kn0aua9w.jpg" alt="align-self"></li>
+</ul>
+</li>
+</ul>
+<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><ul>
+<li>改变子容器的排列顺序，默认值为 0，可以为负值，数值越小排列越靠前。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsjtabgyrzj30kv0dca9v.jpg" alt="order"></li>
+</ul>
+<h2 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h2><h3 id="骰子布局"><a href="#骰子布局" class="headerlink" title="骰子布局"></a>骰子布局</h3><p>html 模板如下</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">&lt;div class="box"&gt;</div><div class="line">  &lt;span class="item"&gt;&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h4 id="单项目"><a href="#单项目" class="headerlink" title="单项目"></a>单项目</h4><ul>
+<li><p>左上角<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsjwa3uda1j30b407ogld.jpg" alt="一个点"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>居中对齐<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fsjwc63ok2j30b406edfl.jpg" alt="居中"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>右对齐<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fsjwdleopij30b4066a9t.jpg" alt="右对齐"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>垂直居中<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjwfr7qwcj30b4064dfl.jpg" alt="垂直居中"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>垂直水平居中<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjwgze1skj30b406xdfl.jpg" alt="垂直水平居中"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>水平居中靠底<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjwihmbw8j30b407sdfl.jpg" alt="靠底"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">  <span class="attribute">align-items</span>: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>靠右下角<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsjwkx9vahj30b407fdfl.jpg" alt="右下角"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: flex-end;</div><div class="line">  <span class="attribute">align-items</span>: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="双项目"><a href="#双项目" class="headerlink" title="双项目"></a>双项目</h4><ul>
+<li><p>两侧对齐<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsjwnk53uej30b4078jr5.jpg" alt="两侧"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>垂直两侧<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsjwo5k8p5j30b407amwx.jpg" alt="垂直"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>垂直居中<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsjwpvyoauj30b406nmwx.jpg" alt="垂直居中"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>垂直靠右<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjwsx4jvfj30b407gjr5.jpg" alt="垂直靠右"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">  <span class="attribute">align-items</span>: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>斜角居中<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fsjwv0likvj30b407kjr5.jpg" alt="斜角居中"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:nth-child(2)</span> &#123;</div><div class="line">  <span class="attribute">align-self</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>斜对角<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fsjwz5n8lvj30b406omwx.jpg" alt="斜对角"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:nth-child(2)</span> &#123;</div><div class="line">  <span class="attribute">align-self</span>: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="三项目"><a href="#三项目" class="headerlink" title="三项目"></a>三项目</h4><ul>
+<li><p>斜对角<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjx0dxfzmj30b406pq2p.jpg" alt="斜对角"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:nth-child(2)</span> &#123;</div><div class="line">  <span class="attribute">align-self</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:nth-child(3)</span> &#123;</div><div class="line">  <span class="attribute">align-self</span>: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="四项目"><a href="#四项目" class="headerlink" title="四项目"></a>四项目</h4><ul>
+<li><p>换行右对齐<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjx436hktj30b406rjr5.jpg" alt="换行"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">  <span class="attribute">justify-content</span>: flex-end;</div><div class="line">  <span class="attribute">align-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>四角对齐<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fsjx6ofbovj30b406rjr5.jpg" alt="四角"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">  <span class="attribute">align-content</span>: space-between;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.column</span> &#123;</div><div class="line">  <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="六项目"><a href="#六项目" class="headerlink" title="六项目"></a>六项目</h4><ul>
+<li><p>两行对齐<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjx900yqoj30b407hq2p.jpg" alt="两行"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">  <span class="attribute">align-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>两列对齐<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fsjxb2l6sxj30b407ct8h.jpg" alt="两列对齐"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">  <span class="attribute">align-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>三行任意<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjxd962p2j30b406ft8h.jpg" alt="三行"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.row</span> &#123;</div><div class="line">  <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.row</span><span class="selector-pseudo">:nth-child(2)</span> &#123;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.row</span><span class="selector-pseudo">:nth-child(3)</span> &#123;</div><div class="line">  <span class="attribute">justify-content</span>: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="九项目"><a href="#九项目" class="headerlink" title="九项目"></a>九项目</h4><ul>
+<li><p>均匀分布<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fsjxerhr48j30b406gmwx.jpg" alt="九项目"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><h4 id="平均网格布局"><a href="#平均网格布局" class="headerlink" title="平均网格布局"></a>平均网格布局</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjxhrbuoej30qh0cst8p.jpg" alt="平均网格"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid-cell"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid-cell"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid-cell"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.Grid</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Grid-cell</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjxod5pkxj30lk05u742.jpg" alt="百分比"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid-cell u-1of4"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid-cell"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Grid-cell u-1of3"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.Grid</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Grid-cell</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Grid-cell</span><span class="selector-class">.u-full</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Grid-cell</span><span class="selector-class">.u-1of2</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">50%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Grid-cell</span><span class="selector-class">.u-1of3</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">33.3333%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Grid-cell</span><span class="selector-class">.u-1of4</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">25%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h3><p>页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjxtkzjppj30f009q0sj.jpg" alt="圣杯布局"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"HolyGrail"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span>...<span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"HolyGrail-body"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"HolyGrail-content"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"HolyGrail-nav"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">"HolyGrail-ads"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">aside</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span>...<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.HolyGrail</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">100vh</span>;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">header</span>,</div><div class="line"><span class="selector-tag">footer</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.HolyGrail-body</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.HolyGrail-content</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.HolyGrail-nav</span>,</div><div class="line"><span class="selector-class">.HolyGrail-ads</span> &#123;</div><div class="line">  <span class="comment">/* 两个边栏的宽度设为12em */</span></div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">12em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.HolyGrail-nav</span> &#123;</div><div class="line">  <span class="comment">/* 导航放到最左边 */</span></div><div class="line">  <span class="attribute">order</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果是小屏幕，躯干的三栏自动变为垂直叠加。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line">@<span class="keyword">media</span> (max-width: <span class="number">768px</span>) &#123;</div><div class="line">  <span class="selector-class">.HolyGrail-body</span> &#123;</div><div class="line">    <span class="attribute">flex-direction</span>: column;</div><div class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="selector-class">.HolyGrail-nav</span>,</div><div class="line">  <span class="selector-class">.HolyGrail-ads</span>,</div><div class="line">  <span class="selector-class">.HolyGrail-content</span> &#123;</div><div class="line">    <span class="attribute">flex</span>: auto;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="输入框布局"><a href="#输入框布局" class="headerlink" title="输入框布局"></a>输入框布局</h3><p>我们常常需要在输入框的前方添加提示，后方添加按钮<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsjy6043t8j30lm08mq2s.jpg" alt="输入框"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"InputAddOn"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"InputAddOn-item"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"InputAddOn-field"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"InputAddOn-item"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.InputAddOn</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.InputAddOn-field</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="悬挂式布局"><a href="#悬挂式布局" class="headerlink" title="悬挂式布局"></a>悬挂式布局</h3><p>主栏的左侧或右侧，需要添加一个图片栏<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjy9p7ww4j30je0f2dg5.jpg" alt="悬挂式"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Media"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"Media-figure"</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"Media-body"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.Media</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">align-items</span>: flex-start;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Media-figure</span> &#123;</div><div class="line">  <span class="attribute">margin-right</span>: <span class="number">1em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Media-body</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="固定底栏"><a href="#固定底栏" class="headerlink" title="固定底栏"></a>固定底栏</h3><p>页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间。可以采用 Flex 布局，让底栏总是出现在页面的底部。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fsjyd9ti58j30pv0ba748.jpg" alt="底部固定"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"Site"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span>...<span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"Site-content"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span>...<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.Site</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">100vh</span>;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.Site-content</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h3><p>每行的项目数固定，会自动分行</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fsjygtt8btj308t0p33yn.jpg" alt="流式布局"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">  <span class="attribute">background-color</span>: black;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">  <span class="attribute">align-content</span>: flex-start;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">  <span class="attribute">box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">background-color</span>: white;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">25%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://juejin.im/post/58e3a5a0a0bb9f0069fc16bb#heading-8" target="_blank" rel="external">一劳永逸的搞定 flex 布局</a><br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a><br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="external">Flex 布局教程：实例篇</a></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本属性"><span class="toc-number">2.</span> <span class="toc-text">基本属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#父容器"><span class="toc-number">2.1.</span> <span class="toc-text">父容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#justify-content（常用）"><span class="toc-number">2.1.1.</span> <span class="toc-text">justify-content（常用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-items（常用）"><span class="toc-number">2.1.2.</span> <span class="toc-text">align-items（常用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-direction"><span class="toc-number">2.1.3.</span> <span class="toc-text">flex-direction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-wrap"><span class="toc-number">2.1.4.</span> <span class="toc-text">flex-wrap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-flow"><span class="toc-number">2.1.5.</span> <span class="toc-text">flex-flow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-content"><span class="toc-number">2.1.6.</span> <span class="toc-text">align-content</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子容器"><span class="toc-number">2.2.</span> <span class="toc-text">子容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-grow"><span class="toc-number">2.2.1.</span> <span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-shrink"><span class="toc-number">2.2.2.</span> <span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-basis"><span class="toc-number">2.2.3.</span> <span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex（常用）"><span class="toc-number">2.2.4.</span> <span class="toc-text">flex（常用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-self（常用）"><span class="toc-number">2.2.5.</span> <span class="toc-text">align-self（常用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#order"><span class="toc-number">2.2.6.</span> <span class="toc-text">order</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用布局"><span class="toc-number">3.</span> <span class="toc-text">常用布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#骰子布局"><span class="toc-number">3.1.</span> <span class="toc-text">骰子布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单项目"><span class="toc-number">3.1.1.</span> <span class="toc-text">单项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双项目"><span class="toc-number">3.1.2.</span> <span class="toc-text">双项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三项目"><span class="toc-number">3.1.3.</span> <span class="toc-text">三项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四项目"><span class="toc-number">3.1.4.</span> <span class="toc-text">四项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#六项目"><span class="toc-number">3.1.5.</span> <span class="toc-text">六项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#九项目"><span class="toc-number">3.1.6.</span> <span class="toc-text">九项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网格布局"><span class="toc-number">3.2.</span> <span class="toc-text">网格布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#平均网格布局"><span class="toc-number">3.2.1.</span> <span class="toc-text">平均网格布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#百分比布局"><span class="toc-number">3.2.2.</span> <span class="toc-text">百分比布局</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#圣杯布局"><span class="toc-number">3.3.</span> <span class="toc-text">圣杯布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入框布局"><span class="toc-number">3.4.</span> <span class="toc-text">输入框布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#悬挂式布局"><span class="toc-number">3.5.</span> <span class="toc-text">悬挂式布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#固定底栏"><span class="toc-number">3.6.</span> <span class="toc-text">固定底栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流式布局"><span class="toc-number">3.7.</span> <span class="toc-text">流式布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">4.</span> <span class="toc-text">参考文章</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2017/10/18/flex布局/";
+  var disqus_url = "https://isliangj.github.io/2017/10/18/flex布局/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy;
+      2018 | Powered by
+        <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by
+      <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1273330571'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273330571%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/lib/in-view.min.js"></script>
+    <script src="/lib/lodash.min.js"></script>
+      <script>
+        var isDown = true
+        var oldY = 0
+        inView.offset(50)
+
+        document.body.addEventListener('touchstart', function () { });
+
+        window.addEventListener('scroll', _.throttle(e => {
+          var currentY = window.scrollY
+          if ((oldY - currentY) < 0) {
+            isDown = true
+          } else {
+            isDown = false
+          }
+          oldY = currentY
+        }, 250))
+
+        $("article img").each(function () {
+          var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+          $(this).wrapAll(strA);
+        });
+
+        $('.toc-link').each(function () {
+          var href = $(this).attr("href");
+
+          inView(href).on('exit', () => {
+            if (isDown) {
+              handleActive(href)
+            }
+          })
+
+          inView(href).on('enter', () => {
+            if (!isDown) {
+              handleActive(href)
+            }
+          })
+
+          this.onclick = function (e) {
+            var pos = $(href).offset().top - 10;
+            $("html,body").animate({ scrollTop: pos }, 300);
+            setTimeout(() => {
+              handleActive(href)
+            }, 350)
+            return false
+          }
+        })
+
+        function handleActive(href) {
+          document.querySelectorAll('.toc-link').forEach(elm => {
+            elm.classList.remove('active')
+          })
+          document.querySelector(".toc [href='" + href + "']").classList.add('active')
+        }
+      </script>
+      <script src="/lib/jquery.fancybox.min.js"></script>
+        
+
+</body>
+</html>
