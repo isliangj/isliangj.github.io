@@ -73,7 +73,7 @@
             
           </div>
           <h2 id="transition（过渡）"><a href="#transition（过渡）" class="headerlink" title="transition（过渡）"></a>transition（过渡）</h2><ul>
-<li><p><strong>定义</strong>：元素从这个属性(color)的某个值(red)过渡到这个属性(color)的另外一个值(green)，这是一个状态的转变，需要一种条件来触发这种转变，比如我们平时用到的:hover、:focus、:checked、媒体查询或者 JavaScript。</p>
+<li><p><strong>定义</strong>：元素从这个属性(color)的某个值(red)过渡到这个属性(color)的另外一个值(green)，这是一个状态的转变，目的是平滑的改变 CSS 的值，需要一种条件来触发这种转变，比如我们平时用到的:hover、:focus、:checked、媒体查询或者 JavaScript。</p>
 </li>
 <li><p><strong>语法</strong>：<code>transition: property duration timing-function delay;</code></p>
 <ul>
@@ -97,11 +97,12 @@
 <li>一条 transition 规则，只能定义一个属性的变化，不能涉及多个属性</li>
 </ul>
 </li>
+<li><p><strong>例子</strong>：</p>
+</li>
 </ul>
-<p>- 例子：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">  #box &#123;</span></div><div class="line"><span class="undefined">    height: 100px;</span></div><div class="line"><span class="undefined">    width: 100px;</span></div><div class="line"><span class="undefined">    background: green;</span></div><div class="line"><span class="undefined">    transition: transform 1s ease-in 1s;</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">  #box:hover &#123;</span></div><div class="line"><span class="undefined">    transform: rotate(180deg) scale(.5, .5);</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>效果：<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fsk4a7br5ig308003amyj.gif" alt="transition"></p>
-<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><ul>
+<h2 id="animation（动画）"><a href="#animation（动画）" class="headerlink" title="animation（动画）"></a>animation（动画）</h2><ul>
 <li><p><strong>定义</strong>：在官方的介绍上介绍这个属性是 transition 属性的扩展，弥补了 transition 的很多不足，可以理解为 animation 是由多个 transition 的效果叠加，并且可操作性更强，能够做出复杂酷炫的效果</p>
 </li>
 <li><p><strong>语法</strong>：<code>animation: name duration timing-function delay iteration-count direction play-state fill-mode;</code></p>
@@ -115,16 +116,75 @@
 </ul>
 </li>
 <li>animation-direction：设置动画播放方向<ul>
-<li>取值：normal(按时间轴顺序),alternate(轮流，即来回往复进行)</li>
+<li>取值：<ul>
+<li>normal(每个动画循环结束，重置到起点重新开始)</li>
+<li>alternate(动画交替反向运行，反向运行时，动画按步后退)</li>
+<li>reverse（反向运行动画，每周期结束动画由尾到头运行）</li>
+<li>alternate-reverse（动画第一次运行时是反向的，然后下一次是正向，后面依次循环）</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>animation-play-state：控制元素动画的播放状态，通过此来控制动画的暂停和继续<ul>
-<li>取值：running(继续)，paused(暂停)</li>
+<li>取值：<ul>
+<li>running(继续)</li>
+<li>paused(暂停)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>animation-fill-mode：控制动画结束后，元素的样式<ul>
+<li>取值：<ul>
+<li>none(回到动画没开始时的状态)</li>
+<li>forwards(目标保持动画最后一帧的样式)</li>
+<li>backwards(动画采用相应第一帧的样式)</li>
+<li>both(根据 animation-direction 轮流应用 forwards 和 backwards 规则)</li>
+<li>注意：与 iteration-count 不要冲突(动画执行无限次)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+</li>
+<li><p>区别：animation 与 transition 不同的是，keyframes 提供更多的控制，尤其是时间轴的控制</p>
+</li>
+</ul>
+<h2 id="transform（变形）"><a href="#transform（变形）" class="headerlink" title="transform（变形）"></a>transform（变形）</h2><ul>
+<li><p><strong>定义</strong>：用于元素进行旋转、缩放、移动或倾斜，和设置样式的动画并没有什么关系，就相当于 color 一样用来设置元素的“外表”</p>
+</li>
+<li><p><strong>取值</strong>：</p>
+<ul>
+<li>旋转：rotate(angle)</li>
+<li>缩放：scale(sx[, sy])</li>
+<li>X 轴缩放：scaleX(sx)</li>
+<li>Y 轴缩放：scaleY(sy)</li>
+<li>倾斜：skew(ax[, ay])</li>
+<li>X 轴倾斜：skewX(angle)</li>
+<li>Y 轴倾斜：skewY(angle)</li>
+<li>平移：translate(tx[, ty])</li>
+<li>X 方向平移：translateX(tx)</li>
+<li>Y 方向平移：translateY(ty)</li>
+<li>注：[]内为可选项</li>
+</ul>
+</li>
+<li><p><strong>搭配</strong>：一般与 transition 一起使用</p>
+</li>
+</ul>
+<h2 id="translate（移动）"><a href="#translate（移动）" class="headerlink" title="translate（移动）"></a>translate（移动）</h2><ul>
+<li><p><strong>定义</strong>：translate 只是 transform 的一个属性值，即移动。</p>
+</li>
+<li><p><strong>分类</strong>：</p>
+<ul>
+<li>translate（X 方向上的距离，Y 方向上的距离）</li>
+<li>translateX（x 方向上的距离）</li>
+<li>translateY（Y 方向上的距离）</li>
+<li>translateZ（Z 方向上的距离）</li>
+<li>translate3d（X 方向上的距离,Y 方向上的距离,Z 方向上的距离）</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title=" 参考文章"></a> 参考文章</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform" target="_blank" rel="external">MDN-transform</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation" target="_blank" rel="external">MDN-animation</a><br><a href="https://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/" target="_blank" rel="external">张鑫旭-CSS3 Transitions, Transforms 和 Animation 使用简介与应用展示</a><br><a href="http://vince.xin/article/5acc34c06b78214ab8ac58bf" target="_blank" rel="external">CSS 动画：animation、transition、transform、translate 傻傻分不清
+</a></p>
 
         </section>
     </article>
@@ -144,7 +204,7 @@
     <div class="toc-container">
         <h1>目录</h1>
         <div class="content">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transition（过渡）"><span class="toc-number">1.</span> <span class="toc-text">transition（过渡）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation"><span class="toc-number">2.</span> <span class="toc-text">animation</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transition（过渡）"><span class="toc-number">1.</span> <span class="toc-text">transition（过渡）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation（动画）"><span class="toc-number">2.</span> <span class="toc-text">animation（动画）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transform（变形）"><span class="toc-number">3.</span> <span class="toc-text">transform（变形）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#translate（移动）"><span class="toc-number">4.</span> <span class="toc-text">translate（移动）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text"> 参考文章</span></a></li></ol>
         </div>
     </div>
     
