@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>Vue组件通信 | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>Vue组件通信</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年12月01日</time>
+            
+            
+              | 
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+  <a href="/tags/#Vue" class='tag'>Vue</a>
+
+
+            
+          </div>
+          <h2 id="父组件-向-子组件-传递"><a href="#父组件-向-子组件-传递" class="headerlink" title="父组件 向 子组件 传递"></a>父组件 向 子组件 传递</h2><h3 id="Props-传递字符串"><a href="#Props-传递字符串" class="headerlink" title="Props 传递字符串"></a>Props 传递字符串</h3><p><strong>实例：</strong> 为了给博文组件传递一个标题，我们可以用一个 <code>props</code> 选项将其包含在该组件可接受的 <code>prop</code> 列表中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'blog-post'</span>, &#123;</div><div class="line">  props: [<span class="string">'title'</span>],</div><div class="line">  template: <span class="string">'&lt;h3&gt;&#123;&#123; title &#125;&#125;&lt;/h3&gt;'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>在上述模板中，你会发现我们能够在组件实例中访问这个值，就像访问 <code>data</code> 中的值一样。</p>
+<p>一个 prop 被注册之后，你就可以像这样把数据作为一个自定义特性传递进来：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&lt;blog-post title=<span class="string">"My journey with Vue"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span></div><div class="line">&lt;blog-post title="Blogging with Vue"&gt;&lt;/blog-post&gt;</div><div class="line">&lt;blog-post title="Why Vue is so fun"&gt;&lt;/blog-post&gt;</div></pre></td></tr></table></figure>
+<h3 id="Props-动态传递数据"><a href="#Props-动态传递数据" class="headerlink" title="Props 动态传递数据"></a>Props 动态传递数据</h3><p>可以使用 <code>v-bind</code> 来动态传递 <code>prop</code>。这在你一开始不清楚要渲染的具体内容是非常有用的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 父组件</span></div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"app"</span>&gt;</div><div class="line">    <span class="comment">// message 定义在子组件的 props 中</span></div><div class="line">    &lt;child :message=<span class="string">"name"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></div><div class="line">  &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  <span class="keyword">import</span> child <span class="keyword">from</span> <span class="string">'./child.vue'</span>;</div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    components: &#123;</div><div class="line">      child</div><div class="line">    &#125;,</div><div class="line">    data() &#123;</div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        name: <span class="string">'linxin'</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p>在子组件 child.vue 中的 <code>props</code> 选项中声明它期待获得的数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 子组件</span></div><div class="line">&lt;template&gt;</div><div class="line">  &lt;span&gt;Hello &#123;&#123;message&#125;&#125;&lt;<span class="regexp">/span&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="comment">// 在 props 中声明获取父组件的数据通过 message 传过来</span></div><div class="line">    props: [<span class="string">'message'</span>]</div><div class="line">  &#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#父组件-向-子组件-传递"><span class="toc-number">1.</span> <span class="toc-text">父组件 向 子组件 传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Props-传递字符串"><span class="toc-number">1.1.</span> <span class="toc-text">Props 传递字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Props-动态传递数据"><span class="toc-number">1.2.</span> <span class="toc-text">Props 动态传递数据</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2017/12/01/Vue组件通信/";
+  var disqus_url = "https://isliangj.github.io/2017/12/01/Vue组件通信/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy;
+      2018 | Powered by
+        <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by
+      <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1273330571'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273330571%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/lib/in-view.min.js"></script>
+    <script src="/lib/lodash.min.js"></script>
+      <script>
+        var isDown = true
+        var oldY = 0
+        inView.offset(50)
+
+        document.body.addEventListener('touchstart', function () { });
+
+        window.addEventListener('scroll', _.throttle(e => {
+          var currentY = window.scrollY
+          if ((oldY - currentY) < 0) {
+            isDown = true
+          } else {
+            isDown = false
+          }
+          oldY = currentY
+        }, 250))
+
+        $("article img").each(function () {
+          var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+          $(this).wrapAll(strA);
+        });
+
+        $('.toc-link').each(function () {
+          var href = $(this).attr("href");
+
+          inView(href).on('exit', () => {
+            if (isDown) {
+              handleActive(href)
+            }
+          })
+
+          inView(href).on('enter', () => {
+            if (!isDown) {
+              handleActive(href)
+            }
+          })
+
+          this.onclick = function (e) {
+            var pos = $(href).offset().top - 10;
+            $("html,body").animate({ scrollTop: pos }, 300);
+            setTimeout(() => {
+              handleActive(href)
+            }, 350)
+            return false
+          }
+        })
+
+        function handleActive(href) {
+          document.querySelectorAll('.toc-link').forEach(elm => {
+            elm.classList.remove('active')
+          })
+          document.querySelector(".toc [href='" + href + "']").classList.add('active')
+        }
+      </script>
+      <script src="/lib/jquery.fancybox.min.js"></script>
+        
+
+</body>
+</html>
