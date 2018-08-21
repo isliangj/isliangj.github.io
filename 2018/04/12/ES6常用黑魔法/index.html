@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>ES6常用黑魔法 | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>ES6常用黑魔法</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年04月12日</time>
+            
+            
+              | 
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+  <a href="/tags/#JS" class='tag'>JS</a>
+
+
+            
+          </div>
+          <h2 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a>let 和 const</h2><ul>
+<li>var</li>
+</ul>
+<p>变量提升</p>
+<ul>
+<li>let</li>
+</ul>
+<p>块级作用域</p>
+<ul>
+<li>const</li>
+</ul>
+<p>常量</p>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2>
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#let-和-const"><span class="toc-number">1.</span> <span class="toc-text">let 和 const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板字符串"><span class="toc-number">2.</span> <span class="toc-text">模板字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#箭头函数"><span class="toc-number">3.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解构"><span class="toc-number">4.</span> <span class="toc-text">解构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展运算符"><span class="toc-number">5.</span> <span class="toc-text">扩展运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async"><span class="toc-number">6.</span> <span class="toc-text">async</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2018/04/12/ES6常用黑魔法/";
+  var disqus_url = "https://isliangj.github.io/2018/04/12/ES6常用黑魔法/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy;
+      2018 | Powered by
+        <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by
+      <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1273330571'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273330571%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/lib/in-view.min.js"></script>
+    <script src="/lib/lodash.min.js"></script>
+      <script>
+        var isDown = true
+        var oldY = 0
+        inView.offset(50)
+
+        document.body.addEventListener('touchstart', function () { });
+
+        window.addEventListener('scroll', _.throttle(e => {
+          var currentY = window.scrollY
+          if ((oldY - currentY) < 0) {
+            isDown = true
+          } else {
+            isDown = false
+          }
+          oldY = currentY
+        }, 250))
+
+        $("article img").each(function () {
+          var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+          $(this).wrapAll(strA);
+        });
+
+        $('.toc-link').each(function () {
+          var href = $(this).attr("href");
+
+          inView(href).on('exit', () => {
+            if (isDown) {
+              handleActive(href)
+            }
+          })
+
+          inView(href).on('enter', () => {
+            if (!isDown) {
+              handleActive(href)
+            }
+          })
+
+          this.onclick = function (e) {
+            var pos = $(href).offset().top - 10;
+            $("html,body").animate({ scrollTop: pos }, 300);
+            setTimeout(() => {
+              handleActive(href)
+            }, 350)
+            return false
+          }
+        })
+
+        function handleActive(href) {
+          document.querySelectorAll('.toc-link').forEach(elm => {
+            elm.classList.remove('active')
+          })
+          document.querySelector(".toc [href='" + href + "']").classList.add('active')
+        }
+      </script>
+      <script src="/lib/jquery.fancybox.min.js"></script>
+        
+
+</body>
+</html>
