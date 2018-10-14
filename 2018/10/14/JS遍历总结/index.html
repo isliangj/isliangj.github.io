@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>JS遍历总结 | isliangj&#39;s Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>isliangj's Blog</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>JS遍历总结</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年10月14日</time>
+            
+            
+              | 
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#笔记" class='tag'>笔记</a>
+
+  <a href="/tags/#JS" class='tag'>JS</a>
+
+
+            
+          </div>
+          <h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><ul>
+<li>适用：数组和字符串</li>
+<li>不使用：对象</li>
+<li>改进的写法：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 当数组长度在循环过程中不会改变时，将数组长度用变量存储起来</span></div><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h2><ul>
+<li>适用：字符串、对象、数组</li>
+<li>不使用：Set 、 Map</li>
+<li>定义：以任意顺序遍历一个对象的可枚举属性</li>
+<li>遍历数组注意：它不仅遍历数组中的元素，还会遍历自定义的属性，甚至原型链上的属性都被访问到。而且，遍历数组元素的顺序可能是随机的。</li>
+<li>所以它更适合遍历对象，不适合遍历数组，但是适合遍历稀疏数组</li>
+<li>遍历速度慢，如果需要遍历一个数量有限的已知属性列表，使用其他循环会更快</li>
+</ul>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><ul>
+<li>适用：数组、Set、Map</li>
+<li>不适用：字符串、对象</li>
+<li>按升序为数组中含有效值的每一项执行一次callback 函数，那些已删除或者未初始化的项将被跳过（例如在稀疏数组上）</li>
+<li>会遍历完所有的元素，不能 break 和 return</li>
+<li>在原数组上进行修改</li>
+<li>返回值：undefined</li>
+</ul>
+<h2 id="for-of"><a href="#for-of" class="headerlink" title="for-of"></a>for-of</h2><ul>
+<li>适用：字符串、数组、Set、Map</li>
+<li>不使用：对象，需要实现Symbol.interator接口</li>
+<li>ES6新增</li>
+<li>可以正确响应 break, continue, return</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><ul>
+<li>适用：数组</li>
+<li>返回：新数组，且函数必须有返回值</li>
+<li>将原数组中的每个元素都按顺序调用一次  callback 函数。callback 每次执行后的返回值（包括 undefined）组合起来形成一个新数组。</li>
+</ul>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><ul>
+<li>适用：数组</li>
+<li>让数组中的前项和后项做某种计算,并累计最终值</li>
+<li>返回值：函数累计处理的结果</li>
+</ul>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><ul>
+<li>适用：数组</li>
+<li>返回：不会改变原数组，它返回过滤后的新数组</li>
+<li>利用所有使得 callback 返回 true 或 等价于 true 的值 的元素创建一个新数组</li>
+</ul>
+<h2 id="every"><a href="#every" class="headerlink" title="every"></a>every</h2><ul>
+<li>适用：数组</li>
+<li>every 不会改变原数组</li>
+<li>当所有的元素都符合条件才返回true。另外，空数组也是返回true</li>
+<li>如果发现了一个为 false 的元素，every 方法将会立即返回 false</li>
+</ul>
+<h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><ul>
+<li>适用：数组</li>
+<li>some 不会改变数组</li>
+<li>数组中的每一个元素执行一次 callback 函数，直到找到一个使得 callback 返回一个“真值”（即可转换为布尔值 true 的值）。如果找到了这样一个值，some 将会立即返回 true。否则，some 返回 false。另外，空数组返回 false</li>
+</ul>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><ul>
+<li>适用：数组</li>
+<li>对数组中的每一项元素执行一次 callback 函数，直至有一个 callback 返回 true。当找到了这样一个元素后，该方法会立即返回这个元素的值，否则返回 undefined。</li>
+</ul>
+<h2 id="对象遍历"><a href="#对象遍历" class="headerlink" title="对象遍历"></a>对象遍历</h2><p>待续…</p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>加载评论框需要翻墙</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#for"><span class="toc-number">1.</span> <span class="toc-text">for</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-in"><span class="toc-number">2.</span> <span class="toc-text">for-in</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#forEach"><span class="toc-number">3.</span> <span class="toc-text">forEach</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-of"><span class="toc-number">4.</span> <span class="toc-text">for-of</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map"><span class="toc-number">5.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reduce"><span class="toc-number">6.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#filter"><span class="toc-number">7.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#every"><span class="toc-number">8.</span> <span class="toc-text">every</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#some"><span class="toc-number">9.</span> <span class="toc-text">some</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find"><span class="toc-number">10.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象遍历"><span class="toc-number">11.</span> <span class="toc-text">对象遍历</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "https-isliangj-github-io";
+  var disqus_identifier = "https://isliangj.github.io/2018/10/14/JS遍历总结/";
+  var disqus_url = "https://isliangj.github.io/2018/10/14/JS遍历总结/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy;
+      2018 | Powered by
+        <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by
+      <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1273330571'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273330571%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/lib/in-view.min.js"></script>
+    <script src="/lib/lodash.min.js"></script>
+      <script>
+        var isDown = true
+        var oldY = 0
+        inView.offset(50)
+
+        document.body.addEventListener('touchstart', function () { });
+
+        window.addEventListener('scroll', _.throttle(e => {
+          var currentY = window.scrollY
+          if ((oldY - currentY) < 0) {
+            isDown = true
+          } else {
+            isDown = false
+          }
+          oldY = currentY
+        }, 250))
+
+        $("article img").each(function () {
+          var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+          $(this).wrapAll(strA);
+        });
+
+        $('.toc-link').each(function () {
+          var href = $(this).attr("href");
+
+          inView(href).on('exit', () => {
+            if (isDown) {
+              handleActive(href)
+            }
+          })
+
+          inView(href).on('enter', () => {
+            if (!isDown) {
+              handleActive(href)
+            }
+          })
+
+          this.onclick = function (e) {
+            var pos = $(href).offset().top - 10;
+            $("html,body").animate({ scrollTop: pos }, 300);
+            setTimeout(() => {
+              handleActive(href)
+            }, 350)
+            return false
+          }
+        })
+
+        function handleActive(href) {
+          document.querySelectorAll('.toc-link').forEach(elm => {
+            elm.classList.remove('active')
+          })
+          document.querySelector(".toc [href='" + href + "']").classList.add('active')
+        }
+      </script>
+      <script src="/lib/jquery.fancybox.min.js"></script>
+        
+
+</body>
+</html>
