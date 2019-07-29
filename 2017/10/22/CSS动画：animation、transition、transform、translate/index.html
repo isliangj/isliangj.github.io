@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
+  <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content>
+  <meta name="keywords" content>
   
     <link rel="icon" href="/favicon.ico">
   
@@ -83,7 +83,7 @@
 </li>
 <li><strong>transition-duration</strong>：规定完成过渡效果需要多少秒或毫秒</li>
 <li><strong>transition-timing-function</strong>：规定速度效果的速度曲线<ul>
-<li>取值有：linear(匀速)、ease（逐渐慢下来）、ease-in（加速）、ease-out（减速）、ease-in-out（先加速后减速）<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsk418fkedj30dw04rdgw.jpg" alt="transition-timing-function"></li>
+<li>取值有：linear(匀速)、ease（逐渐慢下来）、ease-in（加速）、ease-out（减速）、ease-in-out（先加速后减速）<br><img src="http://qiniu.isliangj.cn/20190729170806_jKFHzP_006tNc79gy1fsk418fkedj30dw04rdgw.jpeg" alt="transition-timing-function"></li>
 </ul>
 </li>
 <li><strong>transition-delay</strong>：指定延迟，即属性开始变化时与过渡开始发生时之间的时</li>
@@ -100,8 +100,8 @@
 <li><p><strong>例子</strong>：</p>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="css">  <span class="selector-id">#box</span> &#123;</span></div><div class="line"><span class="undefined">    height: 100px;</span></div><div class="line"><span class="undefined">    width: 100px;</span></div><div class="line"><span class="undefined">    background: green;</span></div><div class="line"><span class="undefined">    transition: transform 1s ease-in 1s;</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="css">  <span class="selector-id">#box</span><span class="selector-pseudo">:hover</span> &#123;</span></div><div class="line"><span class="css">    <span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(180<span class="selector-tag">deg</span>) <span class="selector-tag">scale</span>(<span class="selector-class">.5</span>, <span class="selector-class">.5</span>);</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fsk4a7br5ig308003amyj.gif" alt="transition"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  #box &#123;</span></span><br><span class="line"><span class="undefined">    height: 100px;</span></span><br><span class="line"><span class="undefined">    width: 100px;</span></span><br><span class="line"><span class="undefined">    background: green;</span></span><br><span class="line"><span class="undefined">    transition: transform 1s ease-in 1s;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  #box:hover &#123;</span></span><br><span class="line"><span class="undefined">    transform: rotate(180deg) scale(.5, .5);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="http://qiniu.isliangj.cn/20190729170849_DUJHqr_006tNc79ly1fsk4a7br5ig308003amyj.gif" alt="transition"></p>
 <h2 id="animation（动画）"><a href="#animation（动画）" class="headerlink" title="animation（动画）"></a>animation（动画）</h2><ul>
 <li><p><strong>定义</strong>：在官方的介绍上介绍这个属性是 transition 属性的扩展，弥补了 transition 的很多不足，可以理解为 animation 是由多个 transition 的效果叠加，并且可操作性更强，能够做出复杂酷炫的效果</p>
 </li>
@@ -183,7 +183,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title=" 参考文章"></a> 参考文章</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform" target="_blank" rel="external">MDN-transform</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation" target="_blank" rel="external">MDN-animation</a><br><a href="https://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/" target="_blank" rel="external">张鑫旭-CSS3 Transitions, Transforms 和 Animation 使用简介与应用展示</a><br><a href="http://vince.xin/article/5acc34c06b78214ab8ac58bf" target="_blank" rel="external">CSS 动画：animation、transition、transform、translate 傻傻分不清
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title=" 参考文章"></a> 参考文章</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform" target="_blank" rel="noopener">MDN-transform</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation" target="_blank" rel="noopener">MDN-animation</a></p>
+<p><a href="https://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/" target="_blank" rel="noopener">张鑫旭-CSS3 Transitions, Transforms 和 Animation 使用简介与应用展示</a></p>
+<p><a href="http://vince.xin/article/5acc34c06b78214ab8ac58bf" target="_blank" rel="noopener">CSS 动画：animation、transition、transform、translate 傻傻分不清
 </a></p>
 
         </section>
@@ -257,7 +260,7 @@
   <div class="copyright">
     <div>
       &copy;
-      2018 | Powered by
+      2019 | Powered by
         <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
     <div>
